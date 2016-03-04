@@ -1,0 +1,122 @@
+/*
+ *  General mixins
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+#pxl-mixins {
+  //
+  // To prevent the mixins without parameter to be output into the css-file, use () in definition
+  //
+  .no-list-style() {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  //
+  // Select box appearence
+  .no-appearance() {
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+  }
+
+  //
+  // Button styles
+  .button-normal() {
+    display: block;
+    margin: 0 auto;
+    padding: 8px 0 10px;
+    width: 60%;
+    min-width: 110px;
+    height: 34px;
+    font-family: @pxl-text-font;
+    font-size: @font-size-base;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1;
+    letter-spacing: @pxl-button-letter-spacing;
+    color: #fff;
+    border: none;
+    #pxl-mixins.border-radius(3px);
+    background: @pxl-color-bg-button;
+
+    &:hover {
+      background: @pxl-color-bg-button-hover;
+    }
+  }
+
+  .button-large() {
+    display: block;
+    margin: 0 auto;
+    padding: 13px 0 15px;
+    width: 60%;
+    min-width: 160px;
+    height: 44px;
+    font-family: @pxl-text-font;
+    font-size: @font-size-base;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1;
+    letter-spacing: @pxl-button-letter-spacing;
+    color: #fff;
+    border: none;
+    #pxl-mixins.border-radius(3px);
+    background: @pxl-color-bg-button;
+
+    &:hover {
+      background: @pxl-color-bg-button-hover;
+    }
+  }
+
+  //
+  // Views pager
+  //
+  .view-pager(@fsize: @font-size-base; @color: @text-color; @hcolor: @text-color; @border: none) {
+    ul.pagination {
+      display: inline-block;
+      margin: 20px 0;
+      text-align: center;
+
+      li {
+        a, span {
+          font-family: @pxl-text-font;
+          font-size: @fsize;
+          text-decoration: none;
+          color: @color;
+          border: @border;
+          background: none;
+        }
+
+        &:hover, &:focus, &.active {
+          a, span {
+            color: @hcolor;
+            text-decoration: none;
+          }
+        }
+
+        &.pager-first,
+        &.pager-last {
+
+        }
+
+        &.prev,
+        &.next {
+
+        }
+
+        &.ellipsis {
+          span {
+
+          }
+        }
+      }
+    }
+  }
+
+}

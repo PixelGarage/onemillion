@@ -1,0 +1,417 @@
+/*
+ *  Node / block webform component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+@webform-max-width: 100%;
+@webform-inline-input-width: 58.333333%;
+
+@webform-color-label: #222;
+@webform-color-text: @text-color;
+@webform-color-border: @gray-light;
+@webform-color-border-active: @brand-primary;
+@webform-bg-color-input: #eee;
+@webform-color-shadow: @gray-lighter;
+
+@webform-color-submit: @text-color;
+@webform-bg-color-submit: @gray-lighter;
+
+@webform-success-badge-dim: 60px;
+
+
+
+// Mixins
+// -------------------------
+.form-label() {
+  margin: 5px 10px 10px 0;
+  padding: 0;
+  width: auto;
+  font-family: @pxl-text-font-bold;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.5em;
+  text-align: left;
+  color: @webform-color-label;
+
+  span.form-required {
+    color: @webform-color-text;
+  }
+}
+
+.resp-submit-button(@color: #fff; @bg-color: @gray-light; @radius: @border-radius-small) {
+  display: inline-block;
+  margin: 0;
+  padding: 0.3em 1em;
+  font-family: @pxl-text-font-bold;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: @color;
+  outline: none;
+  #pxl-mixins.border-radius(@radius);
+  border: 2px solid @color;
+  background-color: @bg-color;
+
+  &:hover, &:focus {
+    color: @bg-color;
+    border: 2px solid @bg-color;
+    background: @color;
+  }
+}
+
+
+
+// Node settings
+// -------------------------
+.node-webform {
+  padding-bottom: 30px;
+
+  body.node-type-webform & {
+    // full page webforms
+    padding: 20px 0 100px;
+
+    @media @narrow {
+      padding: 20px 30px 100px;
+    }
+  }
+
+  div.col-sm-12 {
+    width: 100%;
+
+    .field-name-title {
+      //display: none;
+    }
+
+    // see webform-client-form for form style
+
+  }
+
+}
+
+// Submission settings
+// -------------------------
+ul.webform-submission-actions {
+  margin: 10px 0;
+  padding: 0;
+  width: 100%;
+  text-align: right;
+
+  @media @narrow {
+    padding: 0 30px;
+  }
+
+  li {
+    display: inline-block;
+
+    a {
+      padding: 5px 10px;
+      font-family: @pxl-text-font;
+      font-size: @font-size-base;
+      color: @text-color;
+      text-decoration: none;
+      border-radius: 3px;
+      border: 2px solid @text-color;
+      background: none;
+      outline: none;
+
+      &:hover, &:active {
+        color: #fff;
+        background: @text-color none;
+        outline: none;
+      }
+    }
+  }
+}
+
+.webform-submission {
+  padding: 20px 0 100px;
+
+  @media @narrow {
+    padding: 20px 30px 100px;
+  }
+
+}
+
+
+// Confirmation settings
+// -------------------------
+.webform-confirmation {
+  text-align: center;
+
+  .fa {
+    margin: 0;
+    padding: 0;
+    width: @webform-success-badge-dim;
+    height: @webform-success-badge-dim;
+    font-size: (@webform-success-badge-dim - 20px);
+    line-height: @webform-success-badge-dim;
+    #pxl-mixins.border-radius(@webform-success-badge-dim/2);
+
+    &.fa-check {
+      color: @brand-success;
+      border: 2px solid @brand-success;
+    }
+    &.fa-times {
+      color: @brand-danger;
+      border: 2px solid @brand-danger;
+    }
+    &.fa-exclamation {
+      color: @brand-warning;
+      border: 2px solid @brand-warning;
+    }
+  }
+
+  .confirmation-message {
+    p {
+      margin-top: 20px;
+    }
+  }
+}
+
+// Webform settings
+// -------------------------
+form.webform-client-form {
+  // all fieldsets
+  fieldset.panel {
+    .panel-heading {
+      background: none;
+      border-bottom: none;
+
+      .panel-title {
+        display: block;
+        font-family: @pxl-text-font-bold;
+        color: @text-color;
+        text-align: center;
+        font-size: 26px;
+      }
+    }
+
+    .panel-body {
+      .help-block {
+        display: none;
+      }
+      // contains all webform-components of fieldset
+    }
+  }
+
+  // multiple file field wrapper, when files are in table
+  [id$=ajax-wrapper] {
+    /* multi-file upload container */
+    overflow: auto;
+    margin: 0 auto 30px;
+    max-width: @webform-max-width;
+    background-color: #fff;
+
+    .table-responsive {
+      cursor: all-scroll;
+      max-width: 236px;
+
+      @media @narrow {
+        max-width: 356px;
+      }
+      @media @tablet {
+        max-width: none;
+      }
+
+      table {
+        tbody {
+          tr.draggable {
+            position: relative;
+
+            td {
+              display: inline-block;
+              button {
+                position: absolute;
+                right: 2px;
+                width: auto;
+                height: auto;
+                .resp-submit-button();
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .webform-component-multiple-file {
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+
+      .form-managed-file {
+        .input-group-btn {
+          display: inline-block;
+          position: absolute;
+          top: 2px;
+          bottom: 2px;
+          right: 2px;
+          width: auto;
+          height: auto;
+
+          button {
+            .resp-submit-button();
+            font-size: 16px;
+            z-index: 10; // goes over file description
+          }
+        }
+      }
+    }
+  }
+
+  // all components
+  .webform-component {
+    margin: 0 auto 15px;
+    padding: 0;
+    max-width: @webform-max-width;
+    background-color: #fff;
+
+    .control-label {
+      .form-label;
+    }
+
+    div.description {
+      display: block;
+      margin: 0;
+      padding: 5px 0 10px;
+      font-family: @pxl-text-font;
+      font-size: 14px;
+    }
+
+    input, textarea {
+      padding: 5px 10px;
+      height: auto;
+      font-family: @pxl-text-font-light;
+      font-size: 18px;
+      line-height: 1.5em;
+      text-align: left;
+      color: @webform-color-text;
+      box-shadow: none;
+      #pxl-mixins.border-radius(@border-radius-small);
+      border: 1px solid @webform-color-border;
+      background-color: @webform-bg-color-input;
+    }
+    input:focus,
+    textarea:focus {
+      border: 1px solid @webform-color-border-active;
+      .box-shadow(0 0 3px @webform-color-shadow);
+    }
+
+    .form-textarea-wrapper {
+      div.grippie {
+        display: none;
+      }
+    }
+
+    select {
+      padding: 5px 10px;
+      height: auto;
+      font-family: @pxl-text-font-light;
+      font-size: 18px;
+      line-height: 1.2em;
+      text-align: left;
+      color: @webform-color-text;
+      #pxl-mixins.border-radius(@border-radius-small);
+      border: 1px solid @webform-color-border;
+      background-color: @webform-bg-color-input;
+      outline: none;
+
+      &:focus, &:active {
+        outline: none;
+      }
+    }
+
+    .form-managed-file {
+      display: block;
+      position: relative;
+      overflow-x: auto;
+      white-space: nowrap;
+      border: 1px solid @webform-color-border;
+      #pxl-mixins.border-radius(@border-radius-small);
+
+      input {
+        position: relative;
+        float: none;
+        padding: 0.3em;
+        width: 60%;
+        text-align: left;
+        border: none;
+        background: none;
+      }
+
+      button.btn {
+        display: inline-block;
+        margin: 0;
+        .resp-submit-button();
+        z-index: 10;
+      }
+    }
+
+    &.webform-component-markup {
+      margin-bottom: 25px;
+      padding-top: 15px;
+
+      h2 {
+        font-family: @pxl-text-font-bold;
+        font-weight: normal;
+        font-size: @font-size-base;
+        line-height: 1em;
+        text-align: left;
+      }
+      p {
+        font-family: @pxl-text-font-light;
+        #pxl-mixins.font-size-responsive(15px);
+        line-height: 22px;
+        text-align: left;
+        color: @webform-color-text;
+      }
+    }
+
+    //
+    // inline components
+    &.webform-container-inline {
+      position: relative;
+
+      label, input {
+        display: block;
+
+        @media @narrow {
+          display: inline-block;
+        }
+      }
+
+      input.form-text, select {
+        position: relative;
+        right: auto;
+        width: 100%;
+
+        @media @narrow {
+          position: absolute;
+          right: 0;
+          width: @webform-inline-input-width;
+        }
+      }
+    }
+
+  }
+
+  .webform-component-multiple-file {
+    label.control-label {
+      display: none;
+    }
+  }
+
+  div.form-actions {
+    margin: 50px 0;
+    padding-top: 0;
+    text-align: center;
+
+    button.webform-submit {
+      min-width: 50%;
+      .resp-submit-button;
+      padding: 15px 20px;
+    }
+  }
+}

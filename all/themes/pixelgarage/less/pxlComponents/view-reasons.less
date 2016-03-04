@@ -1,0 +1,52 @@
+/*
+ *  View reasons component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+
+
+// General settings
+// -------------------------
+.view.view-reasons {
+  margin: 0 0 50px;
+
+  .view-header {
+    padding: 0 20px;
+
+    p {
+      padding: 50px 0 30px;
+      font-family: @pxl-title-font;
+      font-size: 30px;
+      line-height: 1;
+      border-top: 1px solid @pxl-color-gray-border-light;
+    }
+
+    @media @narrow {
+      padding: 0 30px;
+
+      p {
+        font-size: 30px;
+      }
+    }
+
+    @media @tablet {
+      padding: 0 100px;
+
+      p {
+        font-size: 40px;
+      }
+    }
+  }
+
+  .view-content {
+    .views-row {
+      // see node-reason.less
+    }
+  }
+}

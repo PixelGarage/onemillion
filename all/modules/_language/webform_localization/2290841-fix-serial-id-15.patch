@@ -1,0 +1,20 @@
+diff --git a/webform_localization.module b/webform_localization.module
+index fb0fa7b..c01df7b 100644
+--- a/webform_localization.module
++++ b/webform_localization.module
+@@ -297,6 +297,15 @@ function webform_localization_webform_submission_load(&$submissions) {
+ }
+ 
+ /**
++ * Implements hook_webform_submission_presave().
++ */
++function webform_localization_webform_submission_presave(&$node, &$submission) {
++  if (isset($node->tnid) && $node->tnid != 0) {
++    $submission->serial = _webform_submission_serial_next_value($node->tnid);
++  }
++}
++
++/**
+  * Implements hook_node_delete().
+  */
+ function webform_localization_node_delete($node) {

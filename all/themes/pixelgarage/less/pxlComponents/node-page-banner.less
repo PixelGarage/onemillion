@@ -1,0 +1,114 @@
+/*
+ *  Node page banner component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+@carousel-control-top-small: 110px;
+@carousel-control-top: 160px;
+@carousel-control-shift-small: -10px;
+@carousel-control-shift: -30px;
+
+@carousel-control-shadow-left: 2px 0 2px rgba(100,100,100, 0.4);
+@carousel-control-shadow-right: -2px 0 2px rgba(100,100,100, 0.4);
+
+
+// Mixins
+// -------------------------
+.carousel() {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: auto;
+
+  > .carousel-inner {
+    margin-top: 0;
+
+    .item {
+      > div {
+        width: 100%;
+        height: 300px;
+
+        @media @tablet {
+          height: 400px !important;
+        }
+
+      }
+
+      &.active {
+
+      }
+    }
+  }
+
+  > .carousel-indicators {
+    display: none;
+  }
+
+  > a.carousel-control {
+    display: none;
+  }
+}
+
+
+
+// General settings
+// -------------------------
+.node.node-page-banner {
+  .row {
+    .col-sm-12 {
+      position: relative;
+      padding: 0;
+      width: 100%;
+
+      .field-name-field-images {
+        .field-item {
+          .carousel {
+            .carousel;
+          }
+        }
+      }
+
+      .field-name-field-slogan-row-one,
+      .field-name-field-slogan-row-two,
+      .field-name-field-slogan-row-three {
+        position: absolute;
+        left: 15px;
+        padding: 10px;
+        font-family: @pxl-text-font-bold;
+        font-size: 30px;
+        line-height: 1;
+        //letter-spacing: 1.2px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        color: #fff;
+        background-color: @pxl-color-green;
+
+        @media @tablet {
+          left: 125px;
+          padding: 8px 15px;
+          font-size: 50px;
+        }
+        @media @normal {
+          left: 165px;
+        }
+      }
+
+      .field-name-field-slogan-row-one {
+        top: 35%;
+      }
+
+      .field-name-field-slogan-row-two {
+        top: 54%;
+      }
+
+      .field-name-field-slogan-row-three {
+        top: 73%;
+      }
+
+      .field-name-field-link {
+        display: none;
+      }
+    }
+  }
+}

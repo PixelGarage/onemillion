@@ -1,0 +1,56 @@
+/*
+ *  Language block component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+// Mixins
+// -------------------------
+
+
+
+// General settings
+// -------------------------
+#block-locale-language {
+  display:inline-block;
+  font-family: @pxl-text-font;
+  font-size: @font-size-base;
+
+  ul.language-switcher-locale-url {
+    #pxl-mixins.no-list-style;
+
+    >li {
+      #pxl-mixins.no-list-style;
+      display:inline-block;
+      margin: 0 -0.25em 0 0;
+      padding: 0 10px;
+      line-height: 1;
+      border-right: 1px solid @text-color;
+
+      &.first {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      &.last {
+        border-right: none;
+      }
+
+      a.language-link {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: @link-color;
+        outline: none;
+
+        &.active, &:hover {
+          font-family: @pxl-text-font-bold;
+          text-decoration: none;
+        }
+      }
+
+      span.locale-untranslated {
+        color: @text-color-disabled;
+      }
+    }
+  }
+}

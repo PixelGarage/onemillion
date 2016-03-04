@@ -1,0 +1,137 @@
+/*
+ *  Content section (main content)
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+@pxl-content-fading-height: 20px;
+
+
+// Mixins
+// -------------------------
+
+
+
+// Main settings
+// -------------------------
+.container {
+  // all container with background
+  background-color: #fff;
+
+  a {
+    outline: none;
+    text-decoration: none;
+
+    &.active, &:hover, &:focus {
+      outline: none;
+    }
+  }
+
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  min-height: 320px;
+  background: #444;
+
+  .main-container {
+    .container {
+      padding: 0;
+
+      //
+      // Page header
+      #page-header {
+        .region-header {
+          // block title
+          h2.block-title {
+            margin: 20px 0 10px;
+            font-family: @pxl-text-font;
+            font-size: @font-size-larger;
+          }
+
+        }
+      }
+
+      //
+      // Frames of: Page title, Messages, Admin tabs, Action links and Main content
+      .row {
+        margin: 0 auto;
+
+        section { // column(s)
+          padding: 0;
+
+          h1.page-header {
+            margin: 20px 0 10px;
+            font-family: @pxl-text-font-bold;
+            font-size: @font-size-h1;
+          }
+
+          .messages {
+            margin-top: 20px;
+          }
+
+          //
+          // Admin tabs and action links
+          ul.nav-tabs {
+            margin: 20px 0 5px;
+            li {
+              float: right;
+              a {
+                padding: 5px 10px;
+                font-family: @font-family-monospace;
+                font-size: @font-size-small;
+                border-radius: 0;
+              }
+            }
+          }
+          ul.action-links {
+            margin: 0;
+            li {
+              float: right;
+              a {
+                font-family: @font-family-monospace;
+                font-size: @font-size-small;
+              }
+            }
+          }
+        } // section
+
+        //
+        // main content region
+        .region-content {
+          #block-system-main {
+          }
+        }
+      }
+    }
+
+    //
+    // fading area on top and bottom of main container
+    .fading {
+      display: none; // will be enabled via event
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: @pxl-content-fading-height;
+      z-index: 10;
+
+      &.fading-top {
+        top: 0;
+        #gradient.vertical(#fff, rgba(255,255,255,0));
+      }
+      &.fading-bottom {
+        bottom: 0;
+        #gradient.vertical(rgba(255,255,255,0), #fff);
+      }
+    }
+  } // main-container
+
+  footer {
+  }
+
+}

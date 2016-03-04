@@ -1,0 +1,76 @@
+/* --------------------------------------------------
+ * Pixelgarage fonts
+ * --------------------------------------------------*/
+//
+// webfont licences
+//@import '../fonts/BrandonGrotesque/BrandonGrotesque-Licence.css';
+
+//
+// Google fonts
+//@import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+
+//
+// Awesome icon font
+@import '../fonts/font-awesome/less/font-awesome';
+@pxl-font-path: '../fonts';
+@fa-font-path: '@{pxl-font-path}/font-awesome/fonts'; // override fa font path (lazy loading)
+
+//
+// responsive font sizes
+@resp-font-size:          3.125vw;
+@resp-font-size-min:      16px;
+@resp-font-size-max:      24px;
+@resp-font-size-large:    5vw;
+@resp-font-size-large-min:20px;
+@resp-font-size-large-max:30px;
+
+
+//
+// Define customer specific fonts
+
+// icon font
+@pxl-icon-font: 'fontawesome';
+
+// title font
+@pxl-title-font: 'ProximaNovaBold';
+
+// text fonts
+@pxl-text-font: 'ProximaNovaLight';
+@pxl-text-font-light: @pxl-text-font;
+@pxl-text-font-medium: @pxl-text-font;
+@pxl-text-font-bold: 'ProximaNovaBold';
+@pxl-text-font-italics: 'ProximaNovaLight';
+@pxl-text-font-light-italics: 'ProximaNovaLight';
+@pxl-text-font-bold-italics: 'ProximaNovaBold';
+
+// overrides
+@font-family-base: @pxl-text-font;
+
+// form font
+@pxl-form-font: @pxl-text-font;
+
+//
+// font faces
+//
+// title font
+
+// text fonts
+@font-face {
+  font-family: 'ProximaNovaLight';
+  src: url('@{pxl-font-path}/ProximaNovaLight/ProximaNovaLight.eot');
+  src: url('@{pxl-font-path}/ProximaNovaLight/ProximaNovaLight.eot') format('embedded-opentype'),
+  url('@{pxl-font-path}/ProximaNovaLight/ProximaNovaLight.woff2') format('woff2'),
+  url('@{pxl-font-path}/ProximaNovaLight/ProximaNovaLight.woff') format('woff'),
+  url('@{pxl-font-path}/ProximaNovaLight/ProximaNovaLight.ttf') format('truetype'),
+  url('@{pxl-font-path}/ProximaNovaLight/ProximaNovaLight.svg#ProximaNovaLight') format('svg');
+}
+
+@font-face {
+  font-family: 'ProximaNovaBold';
+  src: url('@{pxl-font-path}/ProximaNovaBold/ProximaNovaBold.eot');
+  src: url('@{pxl-font-path}/ProximaNovaBold/ProximaNovaBold.eot') format('embedded-opentype'),
+  url('@{pxl-font-path}/ProximaNovaBold/ProximaNovaBold.woff2') format('woff2'),
+  url('@{pxl-font-path}/ProximaNovaBold/ProximaNovaBold.woff') format('woff'),
+  url('@{pxl-font-path}/ProximaNovaBold/ProximaNovaBold.ttf') format('truetype'),
+  url('@{pxl-font-path}/ProximaNovaBold/ProximaNovaBold.svg#proximanovaboldwebfont') format('svg');
+}

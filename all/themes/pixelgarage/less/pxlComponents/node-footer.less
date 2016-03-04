@@ -1,0 +1,50 @@
+/*
+ *  Node footer component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+
+
+// General settings
+// -------------------------
+.node.node-footer {
+  .row {
+    margin: 0;
+
+    div.col-sm-12 {
+      padding: 20px;
+      width: 100%;
+      background-color: @pxl-color-gold;
+
+      @media @narrow {
+        padding: 20px 30px;
+      }
+
+      @media @normal {
+        padding: 30px 100px;
+      }
+
+      .field-name-field-medienkontakt {
+        #pxl-mixins.wysiwyg-body;
+        p {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+
+    }
+  }
+}
