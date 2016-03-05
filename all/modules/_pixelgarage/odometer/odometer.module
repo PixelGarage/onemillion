@@ -1,0 +1,234 @@
+<?php
+/**
+ * Module file to handle an odometer for smoothly transitioning numbers.
+ * @file
+ */
+/**
+ * Implements hook_menu().
+ */
+function odometer_menu() {
+  $items = array();
+
+  $items['admin/config/user-interface/odometer'] = array(
+    'title'            => t('Odometer'),
+    'description'      => t('Settings of an <a href="http://github.hubspot.com/odometer/" target="blank">Odometer</a> for smoothly transitioning numbers.'),
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('odometer_admin_settings'),
+    'access arguments' => array('administer odometer'),
+    'file'             => 'odometer.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function odometer_permission() {
+  return array(
+    'administer odometer' => array(
+      'title' => t('Administer Odometer'),
+      'description' => t('Allows to administer the settings for an odometer element.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_variable_info().
+ */
+function odometer_variable_info($options = array()) {
+  $variables['odometer_label'] = array(
+    'type' => 'string',
+    'title' => t('Odometer label', array(), $options),
+    'description' => t('Label for the odometer counter element.', array(), $options),
+    'default' => '',
+    'localize' => TRUE,
+  );
+  return $variables;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function odometer_block_info() {
+  $blocks['odometer_counter'] = array(
+    'info' => t('Odometer counter element'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function odometer_block_configure($delta = '') {
+  $form['odometer_specifics'] = array(
+    '#type'         => 'fieldset',
+    '#title'        => t('Odometer specific configuration'),
+    '#description'   => t('Configure the odometer specific values.'),
+    '#collapsible'  => FALSE,
+    '#collapsed'    => FALSE,
+  );
+  $form['odometer_specifics']['odometer_label'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Odometer label'),
+    '#default_value' => variable_get('odometer_label', ''),
+    '#description'   => t('Sets the label for the odometer'),
+  );
+  $form['odometer_specifics']['odometer_label_position'] = array(
+    '#type' => 'radios',
+    '#title' => t('Position of label'),
+    '#default_value' => variable_get('odometer_label_position', 'top'),
+    '#options' => array(
+      'top' => t('Label above odometer'),
+      'bottom' => t('Label below odometer'),
+    ),
+  );
+  $form['odometer_specifics']['odometer_anim_number_range'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Animated number range'),
+    '#default_value' => variable_get('odometer_anim_number_range', 0),
+    '#description'   => t('Define the range of numbers that are animated when the odometer is shown.'),
+  );
+  $form['odometer_specifics']['odometer_theme'] = array(
+    '#type' => 'select',
+    '#title' => t('Theme'),
+    '#options' => array(
+      'default' => t('Default'),
+      'car' => t('Car'),
+      'train_station' => t('Train station'),
+      'digital' => t('Digital'),
+      'minimal' => t('Minimal'),
+      'plaza' => t('Plaza'),
+      'slot_machine' => t('Slot machine'),
+    ),
+    '#description' => t('Select a predefined theme. All themes can be customized in CSS.'),
+    '#default_value' => variable_get('odometer_theme', 'default'),
+  );
+
+
+  return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function odometer_block_save($delta = '', $edit = array()) {
+  variable_set('odometer_label', $edit['odometer_label']);
+  variable_set('odometer_label_position', $edit['odometer_label_position']);
+  variable_set('odometer_anim_number_range', $edit['odometer_anim_number_range']);
+  variable_set('odometer_theme', $edit['odometer_theme']);
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function odometer_block_view($delta = 0) {
+  $block = array();
+  $path = drupal_get_path('module', 'odometer');
+  $animated_range = variable_get('odometer_anim_number_range');
+  $theme = variable_get('odometer_theme');
+  $css_file = $path;
+
+  switch ($theme) {
+    case 'car':
+      $css_file .= '/css/odometer-theme-car.css';
+      break;
+    case 'train_station':
+      $css_file .= '/css/odometer-theme-train-station.css';
+      break;
+    case 'digital':
+      $css_file .= '/css/odometer-theme-digital.css';
+      break;
+    case 'minimal':
+      $css_file .= '/css/odometer-theme-minimal.css';
+      break;
+    case 'plaza':
+      $css_file .= '/css/odometer-theme-plaza.css';
+      break;
+    case 'slot_machine':
+      $css_file .= '/css/odometer-theme-slot_machine.css';
+      break;
+    case 'default':
+    default:
+      $css_file .= '/css/odometer-theme-default.css';
+      break;
+  }
+
+  switch ($delta) {
+    case 'odometer_counter':
+      $block['subject'] = null;
+      $block['content'] = array(
+        '#markup' => _odometer_element(),
+        '#attached' => array(
+          'css' => array(
+            $css_file,
+          ),
+          'js' => array(
+            $path . '/js/odometer.min.js',
+            $path . '/js/odometer_anim.js',
+            array(
+              'data' => array (
+                'odometer' => array('animated_range' => $animated_range),
+              ),
+              'type' => 'setting',
+            ),
+          ),
+        ),
+      );
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Returns the odometer element.
+ */
+function _odometer_element() {
+  // calculate the time period value if any
+  $number = 0;
+  $base_value = variable_get('odometer_time_based_value');
+  if ($base_value > 0) {
+    $time_start = strtotime(variable_get('odometer_start_date'));
+    $time_end = strtotime(variable_get('odometer_end_date'));
+    $now = time();
+
+    $diff_now = (float)max($now - $time_start, 0.0); // start counting when start date is past
+    $diff_end = (float)max($time_end - $time_start, 1.0); // prevent dividion by zero
+    $factor = min(1.0, $diff_now / $diff_end); // stop counting when end date is reached
+    $number = (int) ($base_value * $factor);
+  }
+
+  // add the function value
+  $number += (int) variable_get('odometer_function_value', 0);
+
+  // let others alter the number
+  drupal_alter('odometer_counter', $number);
+  $element = '<div class="odometer">' . $number . '</div>';
+
+  // add the label
+  $label_top = variable_get('odometer_label_position') == 'top';
+  $label = '<div class="odometer-label">' . variable_get('odometer_label') . '</div>';
+
+  return $label_top ? $label . $element : $element . $label;
+}
+
+/**
+ * Adds a given number to the current odometer value.
+ *
+ * @param $value  number  The value to be added.
+ */
+function odometer_add_value($value) {
+  $number = (int) variable_get('odometer_function_value', 0);
+  $number += (int) $value;
+  variable_set('odometer_function_value', $number);
+}
+
+/**
+ * Resets the odometer value.
+ * Only the value accumulated by a call to odometer_add_value() is reset.
+ * The base value added during a time period is not affected by this reset.
+ */
+function odometer_reset_value() {
+  variable_set('odometer_function_value', 0);
+}

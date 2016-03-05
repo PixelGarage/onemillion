@@ -1,0 +1,9 @@
+name = Odometer
+description = "Provides an odometer element as block for smoothly transitioning numbers."
+core = 7.x
+package = Pixelgarage
+configure = admin/config/user-interface/odometer
+
+dependencies[] = date_popup
+
+version = "7.x-1.0"

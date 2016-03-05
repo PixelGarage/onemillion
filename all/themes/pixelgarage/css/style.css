@@ -9071,6 +9071,58 @@ form#user-login {
   color: #777777;
 }
 /*
+ *  Odometer block component
+ * --------------------------------------------------*/
+.block.block-odometer {
+  margin-top: 20px;
+  text-align: center;
+}
+.block.block-odometer .odometer-label {
+  font-family: 'ProximaNovaBold';
+  font-size: 18px;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000000;
+}
+.block.block-odometer .odometer {
+  font-family: 'ProximaNovaBold';
+  font-size: 30px;
+  line-height: 1;
+}
+.block.block-odometer .odometer .odometer-inside .odometer-digit {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 2px;
+  padding: 0;
+  width: 28px;
+  height: 32px;
+  color: #fff;
+  background-color: #000000;
+}
+.block.block-odometer .odometer .odometer-inside .odometer-digit .odometer-digit-inner .odometer-ribbon .odometer-ribbon-inner .odometer-value {
+  text-align: left;
+  padding-left: 5px;
+}
+.block.block-odometer .odometer .odometer-inside .odometer-formatting-mark {
+  display: inline-block;
+  width: 3px;
+  opacity: 0.0;
+}
+@media screen and (min-width: 768px) {
+  .block.block-odometer {
+    margin-top: 30px;
+  }
+  .block.block-odometer .odometer {
+    font-size: 50px;
+  }
+  .block.block-odometer .odometer .odometer-inside .odometer-digit {
+    width: 40px;
+    height: 52px;
+  }
+  .block.block-odometer .odometer .odometer-formatting-mark {
+    width: 6px;
+  }
+}
+/*
  *  Node page component
  * --------------------------------------------------*/
 .node.node-page {
@@ -10149,11 +10201,16 @@ body.navbar-is-fixed-top.admin-menu {
   padding-top: 0 !important;
 }
 header#navbar {
+  position: absolute;
+  margin: 0;
   border-bottom: none;
   background: none;
 }
+body.admin-menu header#navbar {
+  top: 0;
+}
 header#navbar .container {
-  padding: 30px 15px 10px;
+  padding: 0 15px 10px;
   background: none;
 }
 header#navbar .container .navbar-header a.logo img {
@@ -10170,18 +10227,6 @@ header#navbar .container .navbar-header a.navbar-brand {
 }
 header#navbar .container .navbar-header .navbar-toggle {
   padding: 5px 10px;
-}
-header#navbar .container .navbar-collapse nav ul.navbar-nav {
-  margin: 0;
-}
-header#navbar .container .navbar-collapse nav ul.navbar-nav li {
-  height: 40px;
-}
-header#navbar .container .navbar-collapse nav ul.navbar-nav li a {
-  padding: 7px 15px;
-  font-family: 'ProximaNovaLight';
-  font-size: 20px;
-  line-height: 1;
 }
 /*
  *  Content section (main content)

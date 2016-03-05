@@ -25,11 +25,17 @@ body.navbar-is-fixed-top {
 
 
 header#navbar {
+  position: absolute;
+  margin: 0;
   border-bottom: none;
   background: none;
 
+  body.admin-menu & {
+    top: 0;
+  }
+
   .container {
-    padding: @grid-gutter-width @grid-gutter-width / 2 10px;
+    padding: 0 @grid-gutter-width / 2 10px;
     background: none;
 
     .navbar-header {
@@ -58,28 +64,6 @@ header#navbar {
 
     // collapse part
     .navbar-collapse {
-      // main menu
-      nav {
-        ul.navbar-nav {
-          margin: 0;
-
-          li {
-            height: 40px;
-
-            a {
-              padding: 7px 15px;
-              font-family: @pxl-text-font;
-              font-size: @font-size-base;
-              line-height: 1;
-
-              &:hover,
-              &.active {
-              }
-            }
-          }
-        }
-      }
-
     }
   }
 }

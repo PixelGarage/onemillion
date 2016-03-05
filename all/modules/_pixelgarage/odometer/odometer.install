@@ -1,0 +1,20 @@
+<?php
+/**
+ * Install / uninstall of odometer.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function follow_uninstall() {
+  variable_del('odometer_label');
+  variable_del('odometer_label_position');
+  variable_del('odometer_anim_number_range');
+  variable_del('odometer_theme');
+  variable_del('odometer_function_value');
+
+  variable_del('odometer_time_based_value');
+  variable_del('odometer_start_date');
+  variable_del('odometer_end_date');
+}
+
