@@ -27,6 +27,7 @@
  */
 function _webform_localization_translate_component(&$element, $component) {
   if (isset($component['extra']['translated_strings']) && is_array($component['extra']['translated_strings'])) {
+    $node = !empty($component['nid']) ? node_load($component['nid']) : NULL;
     foreach ($component['extra']['translated_strings'] as $name) {
       $name_list = explode(':', $name);
       $current_element = &$element;
@@ -54,7 +55,13 @@ function _webform_localization_translate_component(&$element, $component) {
         // If property is array, we extract the key from the property.
         list ($property, $key) = explode('-', $property);
         if (isset($current_element['#' . $property][$key])) {
-          $current_element['#' . $property][$key] = i18n_string($name, $current_element['#' . $property][$key], array('sanitize' => FALSE));
+          $text = i18n_string($name, $current_element['#' . $property][$key], array('format' => I18N_STRING_FILTER_XSS));
+          if (module_exists('token')) {
+            $current_element['#' . $property][$key] = webform_replace_tokens($text, $node);
+          }
+          else {
+            $current_element['#' . $property][$key] = $text;
+          }
         }
       }
       else {
@@ -63,11 +70,23 @@ function _webform_localization_translate_component(&$element, $component) {
           $option_group = str_replace('/-', '', $name_list[4]);
           // If it's a element.
           if (isset($name_list[5])) {
-            $current_element['#' . $property][$option_group][$name_list[5]] = i18n_string($name, $current_element['#' . $property][$option_group][$name_list[5]]);
+            $text = i18n_string($name, $current_element['#' . $property][$option_group][$name_list[5]], array('format' => I18N_STRING_FILTER_XSS));
+            if (module_exists('token')) {
+              $current_element['#' . $property][$option_group][$name_list[5]] = webform_replace_tokens($text, $node);
+            }
+            else {
+              $current_element['#' . $property][$key] = $text;
+            }
           }
           else {
             // If it's a option group we translate the key.
-            $translated_option_group = i18n_string($name, $option_group);
+            $text = i18n_string($name, $option_group, array('format' => I18N_STRING_FILTER_XSS));
+            if (module_exists('token')) {
+              $translated_option_group = webform_replace_tokens($text, $node);
+            }
+            else {
+              $translated_option_group = $text;
+            }
             if ($translated_option_group != $option_group) {
               _webform_localization_array_key_replace($current_element['#' . $property], $option_group, $translated_option_group);
             }
@@ -77,80 +96,16 @@ function _webform_localization_translate_component(&$element, $component) {
           // Else we can treat the property as string.
           if (isset($current_element['#' . $property])) {
             if ($property == 'markup' && $current_element['#type'] == 'markup') {
-              $current_element['#' . $property] = i18n_string($name, $current_element['#' . $property], array('format' => $current_element['#format']));
+              $text = i18n_string($name, $current_element['#' . $property], array('format' => $current_element['#format']));
             }
             else {
-              $current_element['#' . $property] = i18n_string($name, $current_element['#' . $property]);
+              $text = i18n_string($name, $current_element['#' . $property], array('format' => I18N_STRING_FILTER_XSS));
             }
-          }
-        }
-      }
-    }
-  }
-}
-
-/**
- * Translates the analysis component properties that are translatable.
- *
- * These are found in under 'translated_strings' in the 'extra' array of the
- * component, which is build when the component is inserted / updated, or
- * when all webform strings are updated from
- * admin/config/regional/translate/i18n_string.
- *
- * @param array $data
- *   The data array of component results.
- * @param array $component
- *   The component.
- */
-function _webform_localization_translate_analysis_component(&$data, &$component) {
-  if (!isset($component['extra']['translated_strings']) || !is_array($component['extra']['translated_strings'])) {
-    return;
-  }
-  // Attempt to translate select options.
-  if ($component['type'] == 'select') {
-    $item_key_lookup = _webform_localization_string_to_key($component['extra']['items']);
-  }
-  // Attempt to translate grid options / questions.
-  if ($component['type'] == 'grid') {
-    $options_key_lookup = _webform_localization_string_to_key($component['extra']['options']);
-    $questions_key_lookup = _webform_localization_string_to_key($component['extra']['questions']);
-  }
-
-  foreach ($component['extra']['translated_strings'] as $name) {
-    $name_list = explode(':', $name);
-    // Translate component name from title property.
-    if ($name_list[3] == '#title') {
-      $component['name'] = i18n_string($name, $component['name']);
-      continue;
-    }
-    // Translate options for select elements.
-    if ($component['type'] == 'select' && strpos($name_list[3], '-') !== FALSE) {
-      list (, $key) = explode('-', $name_list[3]);
-      if (isset($item_key_lookup[$key])) {
-        foreach ($data['table_rows'] as $index => $row) {
-          if ($row[0] == $item_key_lookup[$key]) {
-            $data['table_rows'][$index][0] = i18n_string($name, $row[0]);
-          }
-        }
-      }
-    }
-    // Translate options / questions for grid elements.
-    if ($component['type'] == 'grid' && $name_list[3] !== '#title') {
-      list (, $key) = explode('-', $name_list[3]);
-      if (strpos($name_list[3], 'grid_options')) {
-        if (isset($options_key_lookup[$key])) {
-          foreach ($data['table_header'] as $index => $row) {
-            if ($row == $options_key_lookup[$key]) {
-              $data['table_header'][$index] = i18n_string($name, $row);
+            if (module_exists('token')) {
+              $current_element['#' . $property] = webform_replace_tokens($text, $node);
             }
-          }
-        }
-      }
-      if (strpos($name_list[3], 'grid_questions')) {
-        if (isset($questions_key_lookup[$key])) {
-          foreach ($data['table_rows'] as $index => $row) {
-            if (trim($row[0]) == trim($questions_key_lookup[$key])) {
-              $data['table_rows'][$index][0] = i18n_string($name, $row[0]);
+            else {
+              $current_element['#' . $property] = $text;
             }
           }
         }
@@ -353,7 +308,7 @@ function webform_localization_update_translation_strings($properties) {
  *   A node object.
  */
 function webform_localization_translate_strings(&$node, $update = FALSE) {
-  $option = array('update' => $update, 'sanitize' => FALSE);
+  $option = array('update' => $update, array('format' => I18N_STRING_FILTER_XSS));
   $name = webform_localization_i18n_string_name($node->webform['nid'], 'confirmation');
   $node->webform['confirmation'] = i18n_string(
           $name,
@@ -456,7 +411,7 @@ function webform_localization_email_translate_strings(&$node) {
     }
     if (!empty($email['template']) && $email['template'] != 'default') {
       $name = webform_localization_i18n_string_name($nid, 'email', $eid, 'template');
-      $email['template'] = i18n_string($name, $email['template']);
+      $email['template'] = i18n_string($name, $email['template'], array('format' => I18N_STRING_FILTER_XSS));
     }
   }
 }
@@ -589,7 +544,12 @@ function _webform_localization_string_to_key($string_array) {
   $items = explode("\n", trim($string_array));
   foreach ($items as $item) {
     $item_data = explode('|', $item);
-    $key_array[$item_data[0]] = $item_data[1];
+    if (isset($item_data[1]) && isset($item_data[0])) {
+      $key_array[$item_data[0]] = $item_data[1];
+    }
+    elseif (isset($item_data[1]) && !isset($item_data[0])) {
+      $key_array[$item_data[0]] = '';
+    }
   }
   return $key_array;
 }
