@@ -38,6 +38,9 @@ function pixelgarage_preprocess_webform_confirmation(&$vars) {
   $webform = $vars['node'];
   $tnid = $webform->tnid ? $webform->tnid : $webform->nid;
 
+  // override links
+  $vars['url'] = url();
+
   // get share node and render it
   $nid_share = 28;
   $share = node_load($nid_share);

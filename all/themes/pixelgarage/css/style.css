@@ -9534,7 +9534,7 @@ form#user-login {
 @media screen and (min-width: 1024px) {
   #user_login_form {
     padding: 2em;
-    width: 50%;
+    width: 100%;
     border: 0;
     border-right: 1px solid #eeeeee;
   }
@@ -9560,11 +9560,11 @@ form#user-login {
   background-image: -o-linear-gradient(top, #a70014 0%, #410008 100%);
   background-image: linear-gradient(to bottom, #a70014 0%, #410008 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffa70014', endColorstr='#ff410008', GradientType=0);
-  background-image: -webkit-linear-gradient(top, #2698f2 0%, #0a62a8 100%);
-  background-image: -o-linear-gradient(top, #2698f2 0%, #0a62a8 100%);
-  background-image: linear-gradient(to bottom, #2698f2 0%, #0a62a8 100%);
+  background-image: -webkit-linear-gradient(top, #1aaa7e 0%, #0c523c 100%);
+  background-image: -o-linear-gradient(top, #1aaa7e 0%, #0c523c 100%);
+  background-image: linear-gradient(to bottom, #1aaa7e 0%, #0c523c 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2698f2', endColorstr='#ff0a62a8', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1aaa7e', endColorstr='#ff0c523c', GradientType=0);
 }
 #user_login_form .form-actions-wrapper .form-actions .btn:hover {
   color: #ffffff;
@@ -9576,19 +9576,19 @@ form#user-login {
   text-decoration: none;
 }
 #user_login_form .form-actions-wrapper .form-actions .btn:hover {
-  background-image: -webkit-linear-gradient(top, #0a62a8 0%, #2698f2 100%);
-  background-image: -o-linear-gradient(top, #0a62a8 0%, #2698f2 100%);
-  background-image: linear-gradient(to bottom, #0a62a8 0%, #2698f2 100%);
+  background-image: -webkit-linear-gradient(top, #0c523c 0%, #1aaa7e 100%);
+  background-image: -o-linear-gradient(top, #0c523c 0%, #1aaa7e 100%);
+  background-image: linear-gradient(to bottom, #0c523c 0%, #1aaa7e 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0a62a8', endColorstr='#ff2698f2', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0c523c', endColorstr='#ff1aaa7e', GradientType=0);
 }
 #user_login_form .form-actions-wrapper .login-password {
   display: inline-block;
   margin: 0.5em 0;
-  color: #2698f2;
+  color: #1aaa7e;
 }
 #user_login_form .form-actions-wrapper .login-password:hover {
-  color: #2698f2;
+  color: #0c523c;
   text-decoration: underline;
 }
 /* User register / password forms */
@@ -9612,11 +9612,11 @@ form#user-login {
 #user-pass .form-actions .back-to-login .login-account {
   display: inline-block;
   margin-top: 0.5em;
-  color: #2698f2;
+  color: #1aaa7e;
 }
 #user-register-form .form-actions .back-to-login .login-account:hover,
 #user-pass .form-actions .back-to-login .login-account:hover {
-  color: #2698f2;
+  color: #0c523c;
   text-decoration: underline;
 }
 #user-register-form .form-actions .back-to-login:before,
@@ -9624,7 +9624,7 @@ form#user-login {
   display: inline;
   font-family: "fontawesome";
   content: '\f112';
-  color: #2698f2;
+  color: #1aaa7e;
   text-align: center;
   padding: 0.3em;
 }
@@ -9781,9 +9781,14 @@ form#user-login {
  *  Language block component
  * --------------------------------------------------*/
 #block-locale-language {
-  display: inline-block;
-  font-family: 'ProximaNovaLight';
-  font-size: 20px;
+  display: none;
+  width: 100%;
+  text-align: right;
+}
+@media screen and (min-width: 768px) {
+  #block-locale-language {
+    display: inline-block;
+  }
 }
 #block-locale-language ul.language-switcher-locale-url {
   list-style: none;
@@ -9795,27 +9800,24 @@ form#user-login {
   margin: 0;
   padding: 0;
   display: inline-block;
-  margin: 0 -0.25em 0 0;
-  padding: 0 10px;
-  line-height: 1;
-  border-right: 1px solid #000000;
+  margin: 0 3px;
 }
 #block-locale-language ul.language-switcher-locale-url > li.first {
   margin-left: 0;
   padding-left: 0;
 }
-#block-locale-language ul.language-switcher-locale-url > li.last {
-  border-right: none;
-}
 #block-locale-language ul.language-switcher-locale-url > li a.language-link {
-  text-transform: uppercase;
+  padding: 2px 5px;
+  font-family: 'ProximaNovaBold';
+  font-size: 20px;
+  line-height: 1;
   text-decoration: none;
-  color: #95793e;
+  color: #fff;
   outline: none;
+  background-color: #000000;
 }
 #block-locale-language ul.language-switcher-locale-url > li a.language-link.active,
 #block-locale-language ul.language-switcher-locale-url > li a.language-link:hover {
-  font-family: 'ProximaNovaBold';
   text-decoration: none;
 }
 #block-locale-language ul.language-switcher-locale-url > li span.locale-untranslated {
@@ -9824,9 +9826,6 @@ form#user-login {
 /*
  *  Webform confirmation component
  * --------------------------------------------------*/
-.webform-confirmation {
-  text-align: center;
-}
 .webform-confirmation .confirmation-message {
   padding: 50px 20px 50px;
 }
@@ -9867,6 +9866,21 @@ form#user-login {
 }
 .webform-confirmation .confirmation-message .third-paragraph {
   color: #1aaa7e;
+}
+.links {
+  text-align: center;
+  margin: 10px 20px;
+}
+@media screen and (min-width: 768px) {
+  .links {
+    text-align: left;
+    margin-left: 80px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .links {
+    margin-left: 100px;
+  }
 }
 /*
  *  Webform submission component
@@ -11012,6 +11026,7 @@ body.navbar-is-fixed-top.admin-menu {
   padding-top: 0 !important;
 }
 header#navbar {
+  position: absolute;
   margin: 0;
   border-bottom: none;
   background: none;

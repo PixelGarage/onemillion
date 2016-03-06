@@ -13,9 +13,13 @@
 // General settings
 // -------------------------
 #block-locale-language {
-  display:inline-block;
-  font-family: @pxl-text-font;
-  font-size: @font-size-base;
+  display: none;
+  width: 100%;
+  text-align: right;
+
+  @media @tablet {
+    display:inline-block;
+  }
 
   ul.language-switcher-locale-url {
     #pxl-mixins.no-list-style;
@@ -23,27 +27,25 @@
     >li {
       #pxl-mixins.no-list-style;
       display:inline-block;
-      margin: 0 -0.25em 0 0;
-      padding: 0 10px;
-      line-height: 1;
-      border-right: 1px solid @text-color;
+      margin: 0 3px;
 
       &.first {
         margin-left: 0;
         padding-left: 0;
       }
-      &.last {
-        border-right: none;
-      }
 
       a.language-link {
-        text-transform: uppercase;
+        //text-transform: uppercase;
+        padding: 2px 5px;
+        font-family: @pxl-text-font-bold;
+        font-size: @font-size-base;
+        line-height: 1;
         text-decoration: none;
-        color: @link-color;
+        color: #fff;
         outline: none;
+        background-color: @pxl-color-black;
 
         &.active, &:hover {
-          font-family: @pxl-text-font-bold;
           text-decoration: none;
         }
       }

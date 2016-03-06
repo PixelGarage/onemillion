@@ -296,8 +296,8 @@ function _addtoany_create_script($id_num, $link_name, $link_url) {
  *   The HTML code for the buttons.
  */
 function addtoany_create_node_buttons($node) {
-  $url = isset($node) ? 'node/' . $node->nid : NULL;
-  $title = isset($node) ? $node->title : NULL;
+  $url = null; //isset($node) ? 'node/' . $node->nid : NULL;
+  $title = null; //isset($node) ? $node->title : NULL;
   return addtoany_create_buttons($url, $title);
 }
 

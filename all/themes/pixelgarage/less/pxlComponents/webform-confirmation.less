@@ -15,8 +15,6 @@
 // Confirmation settings
 // -------------------------
 .webform-confirmation {
-  text-align: center;
-
   .confirmation-message {
     padding: 50px 20px 50px;
 
@@ -57,6 +55,20 @@
 
   .confirmation-share {
     // see node-share.less
+  }
+}
+
+.links {
+  text-align: center;
+  margin: 10px 20px;
+
+  @media @tablet {
+    text-align: left;
+    margin-left: 80px;
+  }
+
+  @media @normal {
+    margin-left: 100px;
   }
 }
 

@@ -8,10 +8,10 @@
 //text
 @pxl-login-btn-color: #fff;
 @pxl-login-btn-hover-color: #fff;
-@pxl-login-link-color: #2698f2;
-@pxl-login-link-hover-color: @pxl-login-link-color;
+@pxl-login-link-color: @pxl-color-green;
+@pxl-login-link-hover-color: darken(@pxl-login-link-color, 20%);
 //gradients
-@pxl-login-gradient-top: #2698f2;
+@pxl-login-gradient-top: @pxl-color-green;
 @pxl-login-gradient-bottom: darken(@pxl-login-gradient-top, 20%);
 @pxl-login-gradient-2-top: #a70014;
 @pxl-login-gradient-2-bottom: darken(@pxl-login-gradient-2-top, 20%);
@@ -93,7 +93,7 @@ form#user-login {
 
   @media @normal {
     padding: 2em;
-    width: 50%;
+    width: 100%;
     border: 0;
     border-right: 1px solid @hr-border;
   }

@@ -2,9 +2,7 @@ Specific Project Details:
 
 Changes in Modules (Patches)
 ============================
-1) Libraries module patched (get version of library corrected)
-2) Webform module patched (log error corrected)
-3) Webform_localizaation.module patched (serial id fix for translations)
+1) addtoany.module function addtoany_create_node_buttons() changed
 
 
 Locked Modules (no update)
