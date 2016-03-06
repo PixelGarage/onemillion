@@ -8,39 +8,38 @@
 
 // Mixins
 // -------------------------
+.form-label() {
+  margin: 0 0 20px;
+  padding: 0;
+  width: 100%;
+  font-family: @pxl-text-font-bold;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+  color: @webform-color-label;
+
+  span.form-required {
+    color: @webform-color-text;
+  }
+  @media @tablet {
+    width: auto;
+    text-align: left;
+  }
+
+}
+
 
 
 // Webform settings
 // -------------------------
 form.webform-client-form-25 {
-  // all fieldsets
-  fieldset.panel {
-    .panel-heading {
-      background: none;
-      border-bottom: none;
-
-      .panel-title {
-        display: block;
-        font-family: @pxl-text-font-bold;
-        color: @text-color;
-        text-align: center;
-        font-size: 26px;
-      }
-    }
-
-    .panel-body {
-      .help-block {
-        display: none;
-      }
-      // contains all webform-components of fieldset
-    }
-  }
-
   // all components
   .webform-component {
-    margin: 0 auto 15px;
+    display: block;
+    margin: 30px auto;
     padding: 0;
-    max-width: @webform-max-width;
+    width: @webform-max-width;
     background-color: #fff;
 
     .control-label {
@@ -48,102 +47,51 @@ form.webform-client-form-25 {
     }
 
     div.description {
-      display: block;
-      margin: 0;
-      padding: 5px 0 10px;
-      font-family: @pxl-text-font;
-      font-size: 14px;
+      display: none;
     }
 
-    input, textarea {
-      padding: 5px 10px;
+    input.form-text {
+      display: block;
+      margin: 0 auto;
+      padding: 14px 15px;
       height: auto;
-      font-family: @pxl-text-font-light;
-      font-size: 18px;
-      line-height: 1.5em;
+      width: 100%;
+      font-family: @pxl-text-font;
+      font-size: 20px;
+      line-height: 1;
       text-align: left;
       color: @webform-color-text;
       box-shadow: none;
-      #pxl-mixins.border-radius(@border-radius-small);
+      #pxl-mixins.border-radius(@border-radius-large);
       border: 1px solid @webform-color-border;
       background-color: @webform-bg-color-input;
+      #pxl-mixins.placeholder(@pxl-color-black, center);
+
+      @media @tablet {
+        text-align: left;
+        #pxl-mixins.placeholder(@pxl-color-black, left);
+      }
+
     }
-    input:focus,
-    textarea:focus {
+    input.form-text:focus {
       border: 1px solid @webform-color-border-active;
-      .box-shadow(0 0 3px @webform-color-shadow);
+      .box-shadow(1px 1px 3px @webform-color-shadow inset);
     }
 
-    .form-textarea-wrapper {
-      div.grippie {
-        display: none;
-      }
-    }
-
-    select {
-      padding: 5px 10px;
-      height: auto;
-      font-family: @pxl-text-font-light;
-      font-size: 18px;
-      line-height: 1.2em;
-      text-align: left;
-      color: @webform-color-text;
-      #pxl-mixins.border-radius(@border-radius-small);
-      border: 1px solid @webform-color-border;
-      background-color: @webform-bg-color-input;
-      outline: none;
-
-      &:focus, &:active {
-        outline: none;
-      }
-    }
-
-    &.webform-component-markup {
-      margin-bottom: 25px;
-      padding-top: 15px;
-
-      h2 {
-        font-family: @pxl-text-font-bold;
-        font-weight: normal;
-        font-size: @font-size-base;
-        line-height: 1em;
+    .radio {
+      > label {
+        padding-left: 45%;
         text-align: left;
-      }
-      p {
-        font-family: @pxl-text-font-light;
-        #pxl-mixins.font-size-responsive(15px);
-        line-height: 22px;
-        text-align: left;
-        color: @webform-color-text;
-      }
-    }
 
-    //
-    // inline components
-    &.webform-container-inline {
-      position: relative;
-
-      label, input {
-        display: block;
-
-        @media @narrow {
-          display: inline-block;
+        @media @tablet {
+          padding-left: 20px;
         }
-      }
 
-      input.form-text, select {
-        position: relative;
-        right: auto;
-        width: 100%;
-
-        @media @narrow {
-          position: absolute;
-          right: 0;
-          width: @webform-inline-input-width;
+        > .form-radio {
+          //display: none;
         }
       }
     }
-
   }
 
   div.form-actions {

@@ -12,11 +12,11 @@
 
 // Node settings
 // -------------------------
-.node-webform {
+.node.node-webform {
   padding-bottom: 30px;
 
   .row {
-    div.col-sm-12 {
+    .col-sm-12 {
       padding: 50px 20px 50px;
 
       @media @narrow {
@@ -64,4 +64,19 @@
       }
     }
   }
+}
+
+.node-webform.view-mode-mitmachen {
+  .row {
+    .col-sm-12 {
+      .field-name-field-slogan {
+        margin-bottom: 50px;
+      }
+
+      .field-name-body {
+        margin-bottom: 50px;
+      }
+    }
+  }
+
 }

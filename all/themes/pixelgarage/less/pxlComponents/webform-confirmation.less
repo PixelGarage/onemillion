@@ -17,33 +17,46 @@
 .webform-confirmation {
   text-align: center;
 
-  .fa {
-    margin: 0;
-    padding: 0;
-    width: @webform-success-badge-dim;
-    height: @webform-success-badge-dim;
-    font-size: (@webform-success-badge-dim - 20px);
-    line-height: @webform-success-badge-dim;
-    #pxl-mixins.border-radius(@webform-success-badge-dim/2);
+  .confirmation-message {
+    padding: 50px 20px 50px;
 
-    &.fa-check {
-      color: @brand-success;
-      border: 2px solid @brand-success;
+    @media @narrow {
+      padding: 50px 30px 50px;
     }
-    &.fa-times {
-      color: @brand-danger;
-      border: 2px solid @brand-danger;
+
+    @media @tablet {
+      padding: 75px 80px 50px;
     }
-    &.fa-exclamation {
-      color: @brand-warning;
-      border: 2px solid @brand-warning;
+
+    @media @normal {
+      padding: 75px 100px 50px;
     }
+
+    .first-paragraph, .second-paragraph, .third-paragraph {
+      font-family: @pxl-title-font;
+      font-size: 30px;
+      line-height: 1.2;
+      text-align: center;
+      color: @pxl-color-black;
+
+      @media @tablet {
+        font-size: 40px;
+        text-align: left;
+      }
+    }
+
+    .second-paragraph {
+      color: @pxl-color-gold;
+    }
+
+    .third-paragraph {
+      color: @pxl-color-green;
+    }
+
   }
 
-  .confirmation-message {
-    p {
-      margin-top: 20px;
-    }
+  .confirmation-share {
+    // see node-share.less
   }
 }
 
