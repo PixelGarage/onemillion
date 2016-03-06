@@ -12,6 +12,7 @@
   <?php endif; ?>
   <div class="row">
     <<?php print $central_wrapper; ?> class="col-sm-12 <?php print $central_classes; ?>">
+      <!-- Add info sign on top of node -->
       <div class="fa fa-info"></div>
       <?php print $central; ?>
     </<?php print $central_wrapper; ?>>

@@ -30,22 +30,23 @@
     hyphens: @mode;
   }
 
-  // responsive font size with minimum and maximum size
-  .font-size-responsive(@min-size; @max-size) {
-    font-size: @min-size;
-
-    @media @narrow {
-      font-size: unit(@max-size/6, vw);
+  .placeholder(@color: @input-color-placeholder; @text-align: left) {
+    // Firefox
+    &::-moz-placeholder {
+      text-align: @text-align;
+      color: @color;
+      opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
     }
-    @media @tablet {
-      font-size: @max-size;
-    }
+    &:-ms-input-placeholder { text-align: @text-align; color: @color; } // Internet Explorer 10+
+    &::-webkit-input-placeholder  { text-align: @text-align; color: @color; } // Safari and Chrome
   }
+
+  // responsive font size with minimum and maximum size
   .font-size-responsive(@max-size: @resp-font-size-max) {
     font-size: max(@resp-font-size-min, @max-size*5/8);   // min = 480 / 768 * max
 
     @media @narrow {
-      font-size: unit(@max-size/7.68, vw);
+      font-size: max(unit(@max-size/7.68, vw), unit(@resp-font-size-min/4.8, vw));
     }
     @media @tablet {
       font-size: @max-size;
@@ -53,13 +54,13 @@
   }
 
 
-  .wysiwyg-body(@title-size: @resp-font-size-large-max; @subtitle-size: @resp-font-size-max; @text-size: @font-size-base) {
+  .wysiwyg-body(@text-size: @font-size-base; @title-size: @resp-font-size-large-max; @subtitle-size: @resp-font-size-max) {
     h1, h2, h3, h4, h5, h6 {
       font-family: @pxl-title-font;
-      .font-size-responsive(@title-size);
+      .font-size-responsive(@subtitle-size);
     }
     h1, h2, h3 {
-      .font-size-responsive(@subtitle-size);
+      .font-size-responsive(@title-size);
     }
 
     p, tbody td {

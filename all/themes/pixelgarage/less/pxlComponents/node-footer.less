@@ -8,7 +8,46 @@
 
 // Mixins
 // -------------------------
+.wysiwyg-body(@text-size: @font-size-base; @title-size: @resp-font-size-large-max; @subtitle-size: @resp-font-size-max) {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: @pxl-title-font;
+    font-size: @subtitle-size;
+  }
+  h1, h2, h3 {
+    font-size: @title-size;
+  }
 
+  p, tbody td {
+    font-family: @pxl-text-font;
+    font-size: @text-size;
+    #pxl-mixins.hyphenate;
+  }
+
+  pre, address {
+    font-family: @pxl-text-font-light-italics;
+    font-size: @text-size;
+  }
+
+  strong {
+    font-family: @pxl-text-font-bold;
+  }
+
+  hr {
+    border: 0;
+    border-bottom: 2px solid @text-color;
+    background: none;
+  }
+
+  img, embed, video, audio, iframe {
+    display: block;
+    overflow: hidden;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 100%;
+    height: auto;
+    min-height: 350px;
+  }
+}
 
 
 // General settings
@@ -26,12 +65,16 @@
         padding: 20px 30px;
       }
 
+      @media @tablet {
+        padding: 30px 80px;
+      }
+
       @media @normal {
         padding: 30px 100px;
       }
 
       .field-name-field-medienkontakt {
-        #pxl-mixins.wysiwyg-body;
+        .wysiwyg-body(16px);
         p {
           color: #fff;
         }

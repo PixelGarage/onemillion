@@ -27,24 +27,11 @@
       }
 
       @media @tablet {
-        padding: 20px 100px;
+        padding: 30px 80px;
       }
 
-      .field-name-title {
-        h2 {
-          font-family: @pxl-text-font-bold;
-          font-size: @resp-font-size-large-min;
-          letter-spacing: 1.2px;
-          text-transform: uppercase;
-          color: @text-color;
-
-          @media @narrow {
-            font-size: @resp-font-size-large;
-          }
-          @media @tablet {
-            font-size: @resp-font-size-large-max;
-          }
-        }
+      @media @normal {
+        padding: 30px 100px;
       }
 
       .field-name-field-reason-number {
@@ -83,6 +70,8 @@
         margin: 0;
         padding: 0;
         width: 100%;
+        #pxl-mixins.wysiwyg-body;
+        text-align: center;
 
         @media @tablet {
           display: inline-block;
@@ -90,9 +79,8 @@
           padding-left: 20px;
           width: 90%;
           vertical-align: top;
+          text-align: left;
         }
-
-        #pxl-mixins.wysiwyg-body;
       }
 
     }

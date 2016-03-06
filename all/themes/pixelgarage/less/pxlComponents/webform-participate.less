@@ -1,0 +1,159 @@
+/*
+ *  Webform Addons component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+
+// Webform settings
+// -------------------------
+form.webform-client-form-25 {
+  // all fieldsets
+  fieldset.panel {
+    .panel-heading {
+      background: none;
+      border-bottom: none;
+
+      .panel-title {
+        display: block;
+        font-family: @pxl-text-font-bold;
+        color: @text-color;
+        text-align: center;
+        font-size: 26px;
+      }
+    }
+
+    .panel-body {
+      .help-block {
+        display: none;
+      }
+      // contains all webform-components of fieldset
+    }
+  }
+
+  // all components
+  .webform-component {
+    margin: 0 auto 15px;
+    padding: 0;
+    max-width: @webform-max-width;
+    background-color: #fff;
+
+    .control-label {
+      .form-label;
+    }
+
+    div.description {
+      display: block;
+      margin: 0;
+      padding: 5px 0 10px;
+      font-family: @pxl-text-font;
+      font-size: 14px;
+    }
+
+    input, textarea {
+      padding: 5px 10px;
+      height: auto;
+      font-family: @pxl-text-font-light;
+      font-size: 18px;
+      line-height: 1.5em;
+      text-align: left;
+      color: @webform-color-text;
+      box-shadow: none;
+      #pxl-mixins.border-radius(@border-radius-small);
+      border: 1px solid @webform-color-border;
+      background-color: @webform-bg-color-input;
+    }
+    input:focus,
+    textarea:focus {
+      border: 1px solid @webform-color-border-active;
+      .box-shadow(0 0 3px @webform-color-shadow);
+    }
+
+    .form-textarea-wrapper {
+      div.grippie {
+        display: none;
+      }
+    }
+
+    select {
+      padding: 5px 10px;
+      height: auto;
+      font-family: @pxl-text-font-light;
+      font-size: 18px;
+      line-height: 1.2em;
+      text-align: left;
+      color: @webform-color-text;
+      #pxl-mixins.border-radius(@border-radius-small);
+      border: 1px solid @webform-color-border;
+      background-color: @webform-bg-color-input;
+      outline: none;
+
+      &:focus, &:active {
+        outline: none;
+      }
+    }
+
+    &.webform-component-markup {
+      margin-bottom: 25px;
+      padding-top: 15px;
+
+      h2 {
+        font-family: @pxl-text-font-bold;
+        font-weight: normal;
+        font-size: @font-size-base;
+        line-height: 1em;
+        text-align: left;
+      }
+      p {
+        font-family: @pxl-text-font-light;
+        #pxl-mixins.font-size-responsive(15px);
+        line-height: 22px;
+        text-align: left;
+        color: @webform-color-text;
+      }
+    }
+
+    //
+    // inline components
+    &.webform-container-inline {
+      position: relative;
+
+      label, input {
+        display: block;
+
+        @media @narrow {
+          display: inline-block;
+        }
+      }
+
+      input.form-text, select {
+        position: relative;
+        right: auto;
+        width: 100%;
+
+        @media @narrow {
+          position: absolute;
+          right: 0;
+          width: @webform-inline-input-width;
+        }
+      }
+    }
+
+  }
+
+  div.form-actions {
+    margin: 50px 0;
+    padding-top: 0;
+    text-align: center;
+
+    button.webform-submit {
+      .resp-submit-button(20px);
+      padding: 13px 30px;
+    }
+  }
+}

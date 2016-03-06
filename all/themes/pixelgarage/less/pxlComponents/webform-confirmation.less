@@ -1,0 +1,49 @@
+/*
+ *  Webform confirmation component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+@webform-success-badge-dim: 60px;
+
+
+// Mixins
+// -------------------------
+
+
+
+// Confirmation settings
+// -------------------------
+.webform-confirmation {
+  text-align: center;
+
+  .fa {
+    margin: 0;
+    padding: 0;
+    width: @webform-success-badge-dim;
+    height: @webform-success-badge-dim;
+    font-size: (@webform-success-badge-dim - 20px);
+    line-height: @webform-success-badge-dim;
+    #pxl-mixins.border-radius(@webform-success-badge-dim/2);
+
+    &.fa-check {
+      color: @brand-success;
+      border: 2px solid @brand-success;
+    }
+    &.fa-times {
+      color: @brand-danger;
+      border: 2px solid @brand-danger;
+    }
+    &.fa-exclamation {
+      color: @brand-warning;
+      border: 2px solid @brand-warning;
+    }
+  }
+
+  .confirmation-message {
+    p {
+      margin-top: 20px;
+    }
+  }
+}
+

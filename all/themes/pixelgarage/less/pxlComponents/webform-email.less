@@ -1,0 +1,153 @@
+/*
+ *  Webform Email component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+@webform-max-width: 100%;
+@webform-inline-input-width: 75%;
+
+@webform-color-label: @text-color;
+@webform-color-text: @text-color;
+@webform-color-border: @pxl-color-border-light;
+@webform-color-border-active: @pxl-color-green;
+@webform-bg-color-input: @pxl-color-text-bg;
+@webform-color-shadow: #ccc;
+
+@webform-color-submit: #fff;
+@webform-bg-color-submit: @pxl-color-green;
+
+
+// Mixins
+// -------------------------
+.form-label() {
+  margin: 5px 10px 10px 0;
+  padding: 0;
+  width: auto;
+  font-family: @pxl-text-font-bold;
+  font-size: 40px;
+  font-weight: normal;
+  line-height: 1.5em;
+  text-align: left;
+  color: @webform-color-label;
+
+  span.form-required {
+    color: @webform-color-text;
+  }
+}
+
+.resp-submit-button(@size: @font-size-large; @color: @webform-color-submit; @bg-color: @webform-bg-color-submit; @radius: @border-radius-large) {
+  display: inline-block;
+  margin: 0;
+  padding: 0.6em 1.5em;
+  font-family: @pxl-text-font-bold;
+  font-size: @size;
+  line-height: 1;
+  letter-spacing: 1.5px;
+  text-transform: capitalize;
+  color: @color;
+  outline: none;
+  #pxl-mixins.border-radius(@radius);
+  border: 2px solid @bg-color;
+  background-color: @bg-color;
+
+  &:hover, &:focus {
+    color: @bg-color;
+    border: 2px solid @bg-color;
+    background: @color;
+  }
+}
+
+
+
+
+// Webform settings
+// -------------------------
+form.webform-client-form-18 {
+  // all components
+  .webform-component {
+    display: block;
+    margin: 20px auto;
+    padding: 0;
+    width: @webform-max-width;
+    background-color: #fff;
+
+    @media @tablet {
+      display: inline-block;
+      margin: 50px -2px 30px;
+      width: @webform-inline-input-width;
+      vertical-align: top;
+    }
+
+    .control-label {
+      display: block;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      text-indent: -9999px;
+      width: 50px;
+      height: 50px;
+      #pxl-mixins.border-radius(50%);
+      background: @pxl-color-green url(../images/call2action-90.svg) no-repeat center center / 50% 70%;
+
+      @media @tablet {
+        display: inline-block;
+        margin: 0 5px 0 0;
+        background: @pxl-color-green url(../images/call2action.svg) no-repeat center center / 70% 50%;
+      }
+    }
+
+    div.description {
+      display: none;
+    }
+
+    input, textarea {
+      display: block;
+      margin: 0 auto;
+      padding: 14px 15px;
+      height: auto;
+      width: 85%;
+      font-family: @pxl-text-font;
+      font-size: 20px;
+      line-height: 1;
+      text-align: left;
+      color: @webform-color-text;
+      box-shadow: none;
+      #pxl-mixins.border-radius(@border-radius-large);
+      border: 1px solid @webform-color-border;
+      background-color: @webform-bg-color-input;
+      #pxl-mixins.placeholder(@pxl-color-black, center);
+
+      @media @tablet {
+        display: inline-block;
+        margin: 0;
+        vertical-align: top;
+        #pxl-mixins.placeholder(@pxl-color-black, left);
+      }
+    }
+    input:focus,
+    textarea:focus {
+      border: 1px solid @webform-color-border-active;
+      .box-shadow(1px 1px 3px @webform-color-shadow inset);
+    }
+  }
+
+  div.form-actions {
+    display: block;
+    margin: 20px auto 50px;
+    padding: 0;
+    width: auto;
+    text-align: center;
+
+    @media @tablet {
+      display: inline-block;
+      margin: 50px -2px 30px;
+      width: (100% - @webform-inline-input-width);
+      vertical-align: top;
+    }
+
+    button.webform-submit {
+      .resp-submit-button(20px);
+      padding: 13px 30px;
+    }
+  }
+}

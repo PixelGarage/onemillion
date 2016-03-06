@@ -1,0 +1,58 @@
+/*
+ *  Webform submission component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+
+
+// Submission settings
+// -------------------------
+.webform-submission {
+  padding: 20px 0 100px;
+
+  @media @narrow {
+    padding: 20px 30px 100px;
+  }
+
+}
+
+
+ul.webform-submission-actions {
+  margin: 10px 0;
+  padding: 0;
+  width: 100%;
+  text-align: right;
+
+  @media @narrow {
+    padding: 0 30px;
+  }
+
+  li {
+    display: inline-block;
+
+    a {
+      padding: 5px 10px;
+      font-family: @pxl-text-font;
+      font-size: @font-size-base;
+      color: @text-color;
+      text-decoration: none;
+      border-radius: 3px;
+      border: 2px solid @text-color;
+      background: none;
+      outline: none;
+
+      &:hover, &:active {
+        color: #fff;
+        background: @text-color none;
+        outline: none;
+      }
+    }
+  }
+}
+
