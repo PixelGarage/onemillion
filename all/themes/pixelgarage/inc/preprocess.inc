@@ -33,16 +33,19 @@ function pixelgarage_preprocess_page(&$vars) {
 function pixelgarage_preprocess_webform_confirmation(&$vars) {
   // because we have translated webform nodes, we have to get the submissions
   // of the original node of the translation set, set in the "tnid" property
-  if (!isset($vars['node']) || !isset($vars['sid'])) return;
-
   $webform = $vars['node'];
   $tnid = $webform->tnid ? $webform->tnid : $webform->nid;
+  $lang = $webform->language;
 
   // override links
   $vars['url'] = url();
 
   // get share node and render it
-  $nid_share = 28;
+  if ($lang == 'fr') {
+    $nid_share = 39;
+  } else {
+    $nid_share = 28;
+  }
   $share = node_load($nid_share);
   $vars['share_buttons'] = node_view($share, 'full');
 }

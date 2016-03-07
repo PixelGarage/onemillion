@@ -12,8 +12,10 @@
   <?php endif; ?>
   <div class="row">
     <<?php print $central_wrapper; ?> class="col-sm-12 <?php print $central_classes; ?>">
-      <!-- Add info sign on top of node -->
-      <div class="fa fa-info"></div>
+      <?php if ($nid == 27 || $nid == 38): ?>
+        <!-- Add info sign on top of node -->
+        <div class="fa fa-info"></div>
+      <?php endif; ?>
       <?php print $central; ?>
     </<?php print $central_wrapper; ?>>
   </div>

@@ -2,7 +2,8 @@ Specific Project Details:
 
 Changes in Modules (Patches)
 ============================
-1) addtoany.module function addtoany_create_node_buttons() changed
+1) Patch for webform: anonymous file upload corrected (7.43 bug)
+2) addtoany.module function addtoany_create_node_buttons() changed
 
 
 Locked Modules (no update)
