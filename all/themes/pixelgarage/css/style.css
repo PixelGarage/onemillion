@@ -9851,7 +9851,7 @@ form#user-login {
   font-size: 30px;
   line-height: 1.2;
   text-align: center;
-  color: #000000;
+  color: #95793e;
 }
 @media screen and (min-width: 768px) {
   .webform-confirmation .confirmation-message .first-paragraph,
@@ -9862,10 +9862,10 @@ form#user-login {
   }
 }
 .webform-confirmation .confirmation-message .second-paragraph {
-  color: #95793e;
+  color: #000000;
 }
 .webform-confirmation .confirmation-message .third-paragraph {
-  color: #1aaa7e;
+  color: #95793e;
 }
 .links {
   text-align: center;
@@ -9995,7 +9995,7 @@ form.webform-client-form-29 .webform-component input::-moz-placeholder,
 form.webform-client-form-18 .webform-component textarea::-moz-placeholder,
 form.webform-client-form-29 .webform-component textarea::-moz-placeholder {
   text-align: center;
-  color: #000000;
+  color: #777777;
   opacity: 1;
 }
 form.webform-client-form-18 .webform-component input:-ms-input-placeholder,
@@ -10003,14 +10003,14 @@ form.webform-client-form-29 .webform-component input:-ms-input-placeholder,
 form.webform-client-form-18 .webform-component textarea:-ms-input-placeholder,
 form.webform-client-form-29 .webform-component textarea:-ms-input-placeholder {
   text-align: center;
-  color: #000000;
+  color: #777777;
 }
 form.webform-client-form-18 .webform-component input::-webkit-input-placeholder,
 form.webform-client-form-29 .webform-component input::-webkit-input-placeholder,
 form.webform-client-form-18 .webform-component textarea::-webkit-input-placeholder,
 form.webform-client-form-29 .webform-component textarea::-webkit-input-placeholder {
   text-align: center;
-  color: #000000;
+  color: #777777;
 }
 @media screen and (min-width: 768px) {
   form.webform-client-form-18 .webform-component input,
@@ -10026,7 +10026,7 @@ form.webform-client-form-29 .webform-component textarea::-webkit-input-placehold
   form.webform-client-form-18 .webform-component textarea::-moz-placeholder,
   form.webform-client-form-29 .webform-component textarea::-moz-placeholder {
     text-align: left;
-    color: #000000;
+    color: #777777;
     opacity: 1;
   }
   form.webform-client-form-18 .webform-component input:-ms-input-placeholder,
@@ -10034,14 +10034,14 @@ form.webform-client-form-29 .webform-component textarea::-webkit-input-placehold
   form.webform-client-form-18 .webform-component textarea:-ms-input-placeholder,
   form.webform-client-form-29 .webform-component textarea:-ms-input-placeholder {
     text-align: left;
-    color: #000000;
+    color: #777777;
   }
   form.webform-client-form-18 .webform-component input::-webkit-input-placeholder,
   form.webform-client-form-29 .webform-component input::-webkit-input-placeholder,
   form.webform-client-form-18 .webform-component textarea::-webkit-input-placeholder,
   form.webform-client-form-29 .webform-component textarea::-webkit-input-placeholder {
     text-align: left;
-    color: #000000;
+    color: #777777;
   }
 }
 form.webform-client-form-18 .webform-component input:focus,
@@ -10156,18 +10156,18 @@ form.webform-client-form-30 .webform-component input.form-text {
 form.webform-client-form-25 .webform-component input.form-text::-moz-placeholder,
 form.webform-client-form-30 .webform-component input.form-text::-moz-placeholder {
   text-align: center;
-  color: #000000;
+  color: #777777;
   opacity: 1;
 }
 form.webform-client-form-25 .webform-component input.form-text:-ms-input-placeholder,
 form.webform-client-form-30 .webform-component input.form-text:-ms-input-placeholder {
   text-align: center;
-  color: #000000;
+  color: #777777;
 }
 form.webform-client-form-25 .webform-component input.form-text::-webkit-input-placeholder,
 form.webform-client-form-30 .webform-component input.form-text::-webkit-input-placeholder {
   text-align: center;
-  color: #000000;
+  color: #777777;
 }
 @media screen and (min-width: 768px) {
   form.webform-client-form-25 .webform-component input.form-text,
@@ -10177,18 +10177,18 @@ form.webform-client-form-30 .webform-component input.form-text::-webkit-input-pl
   form.webform-client-form-25 .webform-component input.form-text::-moz-placeholder,
   form.webform-client-form-30 .webform-component input.form-text::-moz-placeholder {
     text-align: left;
-    color: #000000;
+    color: #777777;
     opacity: 1;
   }
   form.webform-client-form-25 .webform-component input.form-text:-ms-input-placeholder,
   form.webform-client-form-30 .webform-component input.form-text:-ms-input-placeholder {
     text-align: left;
-    color: #000000;
+    color: #777777;
   }
   form.webform-client-form-25 .webform-component input.form-text::-webkit-input-placeholder,
   form.webform-client-form-30 .webform-component input.form-text::-webkit-input-placeholder {
     text-align: left;
-    color: #000000;
+    color: #777777;
   }
 }
 form.webform-client-form-25 .webform-component input.form-text:focus,
@@ -10894,6 +10894,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 }
 .node-webform.view-mode-mitmachen .row .col-sm-12 .field-name-field-slogan {
   margin-bottom: 50px;
+  color: #95793e;
 }
 .node-webform.view-mode-mitmachen .row .col-sm-12 .field-name-body {
   margin-bottom: 50px;

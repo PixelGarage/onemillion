@@ -34,20 +34,6 @@ function odometer_permission() {
 }
 
 /**
- * Implements hook_variable_info().
- */
-function odometer_variable_info($options = array()) {
-  $variables['odometer_label'] = array(
-    'type' => 'string',
-    'title' => t('Odometer label', array(), $options),
-    'description' => t('Label for the odometer counter element.', array(), $options),
-    'default' => '',
-    'localize' => TRUE,
-  );
-  return $variables;
-}
-
-/**
  * Implements hook_block_info().
  */
 function odometer_block_info() {
@@ -208,7 +194,7 @@ function _odometer_element() {
 
   // add the label
   $label_top = variable_get('odometer_label_position') == 'top';
-  $label = '<div class="odometer-label">' . variable_get('odometer_label') . '</div>';
+  $label = '<div class="odometer-label">' . t(variable_get('odometer_label')) . '</div>';
 
   return $label_top ? $label . $element : $element . $label;
 }

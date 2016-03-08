@@ -16,6 +16,25 @@ function pixelgarage_menu_alter(&$items) {
 }
 
 /**
+ * Implements hook_webform_component_render_alter().
+ */
+function pixelgarage_webform_component_render_alter(&$element, $component) {
+  //
+  // OVERRIDE WEBFORM LOCALIZATION
+  // Webform_localization adds the title as placeholder without checking the placeholder field
+  // Override: If placeholder is set in form, take the placeholder value.
+  if (!empty($component['extra']['placeholder'])) {
+    $element['#attributes']['placeholder'] = t($component['extra']['placeholder']);
+  }
+}
+
+
+
+/* =============================================================================
+ *      Odometer counter calculation
+ * ========================================================================== */
+
+/**
  * Alter the odometer current value, before it is displayed.
  *
  * 1) Adds the number of submissions of the 'Abstimmen' webform.
