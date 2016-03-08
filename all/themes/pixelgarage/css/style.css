@@ -10934,6 +10934,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-page-banner .row .col-sm-12 .field-name-odometer {
   position: absolute;
   top: 0;
+  width: 80%;
   left: 50%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
