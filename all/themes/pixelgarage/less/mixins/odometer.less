@@ -5,7 +5,7 @@
 // Variables
 // -------------------------
 @odometer-digit-size: 50px;
-@odometer-digit-small-size: 30px;
+@odometer-digit-small-size: 32px;
 
 
 // Mixins
@@ -18,16 +18,17 @@
     .odometer-label {
       font-family: @pxl-text-font-bold;
       font-size: 18px;
+      letter-spacing: 0.05em;
       color: #fff;
-      text-shadow: 1px 1px 1px #000;
+      text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
     }
 
     .odometer {
-      font-family: @pxl-text-font-bold;
-      font-size: @odometer-digit-small-size;
-      line-height: 1;
-
       .odometer-inside {
+        font-family: @pxl-text-font-bold;
+        font-size: @odometer-digit-small-size;
+        line-height: 1.1;
+
         .odometer-digit {
           display: inline-block;
           vertical-align: top;
@@ -46,8 +47,9 @@
             .odometer-ribbon {
               .odometer-ribbon-inner {
                 .odometer-value {
-                  text-align: left;
+                  margin-top: -3px;
                   padding-left: 5px;
+                  text-align: left;
                 }
               }
             }
@@ -66,9 +68,9 @@
       margin-top: 30px;
 
       .odometer {
-        font-size: @odometer-digit-size;
-
         .odometer-inside {
+          font-size: @odometer-digit-size;
+
           .odometer-digit {
             width: 40px;
             height: (@odometer-digit-size + 2);

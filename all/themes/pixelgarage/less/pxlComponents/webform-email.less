@@ -27,18 +27,17 @@
   font-family: @pxl-text-font-bold;
   font-size: @size;
   line-height: 1;
-  letter-spacing: 1.5px;
+  letter-spacing: 0;
   text-transform: capitalize;
   color: @color;
   outline: none;
+  opacity: 1.0;
   #pxl-mixins.border-radius(@radius);
   border: 2px solid @bg-color;
   background-color: @bg-color;
 
   &:hover, &:focus {
-    color: @bg-color;
-    border: 2px solid @bg-color;
-    background: @color;
+    opacity: 0.7;
   }
 }
 
@@ -131,8 +130,8 @@ form.webform-client-form-29 {
     }
 
     button.webform-submit {
-      .resp-submit-button(20px);
-      padding: 13px 30px;
+      .resp-submit-button(22px);
+      padding: 12px 30px;
     }
   }
 }

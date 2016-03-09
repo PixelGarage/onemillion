@@ -1075,12 +1075,12 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #95793e;
+  color: #a68c5a;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #4d3f20;
+  color: #645436;
   text-decoration: none;
 }
 a:focus {
@@ -3272,7 +3272,7 @@ fieldset[disabled] .btn-danger.active {
   background-color: #ffffff;
 }
 .btn-link {
-  color: #95793e;
+  color: #a68c5a;
   font-weight: normal;
   border-radius: 0;
 }
@@ -3293,7 +3293,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #4d3f20;
+  color: #645436;
   text-decoration: none;
   background-color: transparent;
 }
@@ -3870,7 +3870,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a:hover,
 .nav .open > a:focus {
   background-color: #eeeeee;
-  border-color: #95793e;
+  border-color: #a68c5a;
 }
 .nav .nav-divider {
   height: 1px;
@@ -4592,7 +4592,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 6px 12px;
   line-height: 1.42857143;
   text-decoration: none;
-  color: #95793e;
+  color: #a68c5a;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   margin-left: -1px;
@@ -4612,7 +4612,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  color: #4d3f20;
+  color: #645436;
   background-color: #eeeeee;
   border-color: #dddddd;
 }
@@ -4807,7 +4807,7 @@ a.badge:focus {
 }
 .list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
-  color: #95793e;
+  color: #a68c5a;
   background-color: #ffffff;
 }
 .list-group-item > .badge {
@@ -4878,7 +4878,7 @@ a.badge:focus {
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
-  border-color: #95793e;
+  border-color: #a68c5a;
 }
 .thumbnail .caption {
   padding: 9px;
@@ -9560,11 +9560,11 @@ form#user-login {
   background-image: -o-linear-gradient(top, #a70014 0%, #410008 100%);
   background-image: linear-gradient(to bottom, #a70014 0%, #410008 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffa70014', endColorstr='#ff410008', GradientType=0);
-  background-image: -webkit-linear-gradient(top, #1aaa7e 0%, #0c523c 100%);
-  background-image: -o-linear-gradient(top, #1aaa7e 0%, #0c523c 100%);
-  background-image: linear-gradient(to bottom, #1aaa7e 0%, #0c523c 100%);
+  background-image: -webkit-linear-gradient(top, #2dba71 0%, #19683f 100%);
+  background-image: -o-linear-gradient(top, #2dba71 0%, #19683f 100%);
+  background-image: linear-gradient(to bottom, #2dba71 0%, #19683f 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1aaa7e', endColorstr='#ff0c523c', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2dba71', endColorstr='#ff19683f', GradientType=0);
 }
 #user_login_form .form-actions-wrapper .form-actions .btn:hover {
   color: #ffffff;
@@ -9576,19 +9576,19 @@ form#user-login {
   text-decoration: none;
 }
 #user_login_form .form-actions-wrapper .form-actions .btn:hover {
-  background-image: -webkit-linear-gradient(top, #0c523c 0%, #1aaa7e 100%);
-  background-image: -o-linear-gradient(top, #0c523c 0%, #1aaa7e 100%);
-  background-image: linear-gradient(to bottom, #0c523c 0%, #1aaa7e 100%);
+  background-image: -webkit-linear-gradient(top, #19683f 0%, #2dba71 100%);
+  background-image: -o-linear-gradient(top, #19683f 0%, #2dba71 100%);
+  background-image: linear-gradient(to bottom, #19683f 0%, #2dba71 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0c523c', endColorstr='#ff1aaa7e', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff19683f', endColorstr='#ff2dba71', GradientType=0);
 }
 #user_login_form .form-actions-wrapper .login-password {
   display: inline-block;
   margin: 0.5em 0;
-  color: #1aaa7e;
+  color: #2dba71;
 }
 #user_login_form .form-actions-wrapper .login-password:hover {
-  color: #0c523c;
+  color: #19683f;
   text-decoration: underline;
 }
 /* User register / password forms */
@@ -9612,11 +9612,11 @@ form#user-login {
 #user-pass .form-actions .back-to-login .login-account {
   display: inline-block;
   margin-top: 0.5em;
-  color: #1aaa7e;
+  color: #2dba71;
 }
 #user-register-form .form-actions .back-to-login .login-account:hover,
 #user-pass .form-actions .back-to-login .login-account:hover {
-  color: #0c523c;
+  color: #19683f;
   text-decoration: underline;
 }
 #user-register-form .form-actions .back-to-login:before,
@@ -9624,7 +9624,7 @@ form#user-login {
   display: inline;
   font-family: "fontawesome";
   content: '\f112';
-  color: #1aaa7e;
+  color: #2dba71;
   text-align: center;
   padding: 0.3em;
 }
@@ -9800,18 +9800,21 @@ form#user-login {
   margin: 0;
   padding: 0;
   display: inline-block;
-  margin: 0 3px;
+  margin: 0 2px;
 }
 #block-locale-language ul.language-switcher-locale-url > li.first {
   margin-left: 0;
   padding-left: 0;
 }
 #block-locale-language ul.language-switcher-locale-url > li a.language-link {
-  padding: 2px 5px;
+  display: inline-block;
+  padding: 3px 5px;
+  width: 22px;
   font-family: 'ProximaNovaBold';
   font-size: 20px;
   line-height: 1;
   text-decoration: none;
+  text-align: center;
   color: #fff;
   outline: none;
   background-color: #000000;
@@ -9851,7 +9854,7 @@ form#user-login {
   font-size: 30px;
   line-height: 1.2;
   text-align: center;
-  color: #95793e;
+  color: #a68c5a;
 }
 @media screen and (min-width: 768px) {
   .webform-confirmation .confirmation-message .first-paragraph,
@@ -9865,7 +9868,7 @@ form#user-login {
   color: #000000;
 }
 .webform-confirmation .confirmation-message .third-paragraph {
-  color: #95793e;
+  color: #a68c5a;
 }
 .links {
   text-align: center;
@@ -9955,14 +9958,14 @@ form.webform-client-form-29 .webform-component .control-label {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  background: #1aaa7e url(../images/call2action-90.svg) no-repeat center center / 50% 70%;
+  background: #2dba71 url(../images/call2action-90.svg) no-repeat center center / 50% 70%;
 }
 @media screen and (min-width: 768px) {
   form.webform-client-form-18 .webform-component .control-label,
   form.webform-client-form-29 .webform-component .control-label {
     display: inline-block;
     margin: 0 5px 0 0;
-    background: #1aaa7e url(../images/call2action.svg) no-repeat center center / 70% 50%;
+    background: #2dba71 url(../images/call2action.svg) no-repeat center center / 70% 50%;
   }
 }
 form.webform-client-form-18 .webform-component div.description,
@@ -10048,7 +10051,7 @@ form.webform-client-form-18 .webform-component input:focus,
 form.webform-client-form-29 .webform-component input:focus,
 form.webform-client-form-18 .webform-component textarea:focus,
 form.webform-client-form-29 .webform-component textarea:focus {
-  border: 1px solid #1aaa7e;
+  border: 1px solid #2dba71;
   -webkit-box-shadow: 1px 1px 3px #cccccc inset;
   box-shadow: 1px 1px 3px #cccccc inset;
 }
@@ -10075,26 +10078,25 @@ form.webform-client-form-29 div.form-actions button.webform-submit {
   margin: 0;
   padding: 0.6em 1.5em;
   font-family: 'ProximaNovaBold';
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1;
-  letter-spacing: 1.5px;
+  letter-spacing: 0;
   text-transform: capitalize;
   color: #ffffff;
   outline: none;
+  opacity: 1.0;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
-  border: 2px solid #1aaa7e;
-  background-color: #1aaa7e;
-  padding: 13px 30px;
+  border: 2px solid #2dba71;
+  background-color: #2dba71;
+  padding: 12px 30px;
 }
 form.webform-client-form-18 div.form-actions button.webform-submit:hover,
 form.webform-client-form-29 div.form-actions button.webform-submit:hover,
 form.webform-client-form-18 div.form-actions button.webform-submit:focus,
 form.webform-client-form-29 div.form-actions button.webform-submit:focus {
-  color: #1aaa7e;
-  border: 2px solid #1aaa7e;
-  background: #ffffff;
+  opacity: 0.7;
 }
 /*
  *  Webform Addons component
@@ -10102,7 +10104,7 @@ form.webform-client-form-29 div.form-actions button.webform-submit:focus {
 form.webform-client-form-25 .webform-component,
 form.webform-client-form-30 .webform-component {
   display: block;
-  margin: 30px auto;
+  margin: 50px auto;
   padding: 0;
   width: 100%;
   background-color: #fff;
@@ -10114,8 +10116,8 @@ form.webform-client-form-30 .webform-component .control-label {
   width: 100%;
   font-family: 'ProximaNovaBold';
   font-size: 20px;
+  line-height: 28px;
   font-weight: normal;
-  line-height: 1;
   text-align: center;
   color: #000000;
 }
@@ -10127,6 +10129,8 @@ form.webform-client-form-30 .webform-component .control-label span.form-required
   form.webform-client-form-25 .webform-component .control-label,
   form.webform-client-form-30 .webform-component .control-label {
     width: auto;
+    font-size: 22px;
+    line-height: 34px;
     text-align: left;
   }
 }
@@ -10193,19 +10197,31 @@ form.webform-client-form-30 .webform-component input.form-text::-webkit-input-pl
 }
 form.webform-client-form-25 .webform-component input.form-text:focus,
 form.webform-client-form-30 .webform-component input.form-text:focus {
-  border: 1px solid #1aaa7e;
+  border: 1px solid #2dba71;
   -webkit-box-shadow: 1px 1px 3px #cccccc inset;
   box-shadow: 1px 1px 3px #cccccc inset;
 }
 form.webform-client-form-25 .webform-component .radio > label,
 form.webform-client-form-30 .webform-component .radio > label {
-  padding-left: 45%;
+  padding-left: 20%;
+  font-family: 'ProximaNovaLight';
+  font-size: 20px;
+  font-weight: normal;
   text-align: left;
+}
+form.webform-client-form-25 .webform-component .radio > label > .form-radio,
+form.webform-client-form-30 .webform-component .radio > label > .form-radio {
+  margin: 7px 0 0 -30px;
 }
 @media screen and (min-width: 768px) {
   form.webform-client-form-25 .webform-component .radio > label,
   form.webform-client-form-30 .webform-component .radio > label {
-    padding-left: 20px;
+    padding-left: 40px;
+    font-size: 22px;
+  }
+  form.webform-client-form-25 .webform-component .radio > label > .form-radio,
+  form.webform-client-form-30 .webform-component .radio > label > .form-radio {
+    margin: 10px 0 0 -30px;
   }
 }
 form.webform-client-form-25 div.form-actions,
@@ -10220,26 +10236,25 @@ form.webform-client-form-30 div.form-actions button.webform-submit {
   margin: 0;
   padding: 0.6em 1.5em;
   font-family: 'ProximaNovaBold';
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1;
-  letter-spacing: 1.5px;
+  letter-spacing: 0;
   text-transform: capitalize;
   color: #ffffff;
   outline: none;
+  opacity: 1.0;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
-  border: 2px solid #1aaa7e;
-  background-color: #1aaa7e;
-  padding: 13px 30px;
+  border: 2px solid #2dba71;
+  background-color: #2dba71;
+  padding: 12px 30px;
 }
 form.webform-client-form-25 div.form-actions button.webform-submit:hover,
 form.webform-client-form-30 div.form-actions button.webform-submit:hover,
 form.webform-client-form-25 div.form-actions button.webform-submit:focus,
 form.webform-client-form-30 div.form-actions button.webform-submit:focus {
-  color: #1aaa7e;
-  border: 2px solid #1aaa7e;
-  background: #ffffff;
+  opacity: 0.7;
 }
 /*
  *  Node page component
@@ -10273,12 +10288,13 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  background-color: #1aaa7e;
+  background-color: #2dba71;
 }
 .node.node-page .row div.col-sm-12 .field-name-title h2 {
   margin: 20px 0 50px;
   font-family: 'ProximaNovaBold';
-  font-size: 18px;
+  font-size: 20px;
+  line-height: 28px;
   letter-spacing: 1.2px;
   text-align: center;
   color: #000000;
@@ -10303,7 +10319,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-page .row div.col-sm-12 .field-name-body h5,
 .node.node-page .row div.col-sm-12 .field-name-body h6 {
   font-family: 'ProximaNovaBold';
-  font-size: 16px;
+  font-size: 18px;
 }
 @media screen and (min-width: 480px) {
   .node.node-page .row div.col-sm-12 .field-name-body h1,
@@ -10312,7 +10328,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   .node.node-page .row div.col-sm-12 .field-name-body h4,
   .node.node-page .row div.col-sm-12 .field-name-body h5,
   .node.node-page .row div.col-sm-12 .field-name-body h6 {
-    font-size: 3.33333333vw;
+    font-size: 3.75vw;
   }
 }
 @media screen and (min-width: 768px) {
@@ -10347,7 +10363,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-page .row div.col-sm-12 .field-name-body p,
 .node.node-page .row div.col-sm-12 .field-name-body tbody td {
   font-family: 'ProximaNovaLight';
-  font-size: 16px;
+  font-size: 18px;
   -ms-word-break: break-all;
   word-break: break-word;
   -webkit-hyphens: auto;
@@ -10359,7 +10375,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 @media screen and (min-width: 480px) {
   .node.node-page .row div.col-sm-12 .field-name-body p,
   .node.node-page .row div.col-sm-12 .field-name-body tbody td {
-    font-size: 3.33333333vw;
+    font-size: 3.75vw;
   }
 }
 @media screen and (min-width: 768px) {
@@ -10371,12 +10387,12 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-page .row div.col-sm-12 .field-name-body pre,
 .node.node-page .row div.col-sm-12 .field-name-body address {
   font-family: 'ProximaNovaLight';
-  font-size: 16px;
+  font-size: 18px;
 }
 @media screen and (min-width: 480px) {
   .node.node-page .row div.col-sm-12 .field-name-body pre,
   .node.node-page .row div.col-sm-12 .field-name-body address {
-    font-size: 3.33333333vw;
+    font-size: 3.75vw;
   }
 }
 @media screen and (min-width: 768px) {
@@ -10407,12 +10423,12 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   min-height: 350px;
 }
 .node.node-page .row div.col-sm-12 .field-name-body a {
-  border-bottom: 1px solid #95793e;
+  border-bottom: 1px solid #a68c5a;
 }
 .node.node-page .row div.col-sm-12 .field-name-body a:hover,
 .node.node-page .row div.col-sm-12 .field-name-body a.active,
 .node.node-page .row div.col-sm-12 .field-name-body a:focus {
-  border-bottom: 1px solid #4d3f20;
+  border-bottom: 1px solid #645436;
 }
 /*
  *  Node reason component
@@ -10452,13 +10468,13 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   height: 45px;
   font-family: 'ProximaNovaBold';
   font-size: 30px;
-  line-height: 45px;
+  line-height: 46px;
   text-align: center;
   color: #fff;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  background-color: #95793e;
+  background-color: #a68c5a;
 }
 @media screen and (min-width: 768px) {
   .node.node-reason .row div.col-sm-12 .field-name-field-reason-number {
@@ -10486,7 +10502,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-reason .row div.col-sm-12 .field-name-body h5,
 .node.node-reason .row div.col-sm-12 .field-name-body h6 {
   font-family: 'ProximaNovaBold';
-  font-size: 16px;
+  font-size: 18px;
 }
 @media screen and (min-width: 480px) {
   .node.node-reason .row div.col-sm-12 .field-name-body h1,
@@ -10495,7 +10511,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   .node.node-reason .row div.col-sm-12 .field-name-body h4,
   .node.node-reason .row div.col-sm-12 .field-name-body h5,
   .node.node-reason .row div.col-sm-12 .field-name-body h6 {
-    font-size: 3.33333333vw;
+    font-size: 3.75vw;
   }
 }
 @media screen and (min-width: 768px) {
@@ -10530,7 +10546,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-reason .row div.col-sm-12 .field-name-body p,
 .node.node-reason .row div.col-sm-12 .field-name-body tbody td {
   font-family: 'ProximaNovaLight';
-  font-size: 16px;
+  font-size: 18px;
   -ms-word-break: break-all;
   word-break: break-word;
   -webkit-hyphens: auto;
@@ -10542,7 +10558,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 @media screen and (min-width: 480px) {
   .node.node-reason .row div.col-sm-12 .field-name-body p,
   .node.node-reason .row div.col-sm-12 .field-name-body tbody td {
-    font-size: 3.33333333vw;
+    font-size: 3.75vw;
   }
 }
 @media screen and (min-width: 768px) {
@@ -10554,12 +10570,12 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-reason .row div.col-sm-12 .field-name-body pre,
 .node.node-reason .row div.col-sm-12 .field-name-body address {
   font-family: 'ProximaNovaLight';
-  font-size: 16px;
+  font-size: 18px;
 }
 @media screen and (min-width: 480px) {
   .node.node-reason .row div.col-sm-12 .field-name-body pre,
   .node.node-reason .row div.col-sm-12 .field-name-body address {
-    font-size: 3.33333333vw;
+    font-size: 3.75vw;
   }
 }
 @media screen and (min-width: 768px) {
@@ -10607,7 +10623,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 }
 .node.node-share .row div.col-sm-12 {
   padding: 20px;
-  background-color: #1aaa7e;
+  background-color: #2dba71;
 }
 @media screen and (min-width: 480px) {
   .node.node-share .row div.col-sm-12 {
@@ -10645,7 +10661,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   display: inline-block;
 }
 .node.node-share .row div.col-sm-12 .addtoany_list a .a2a_svg {
-  width: 50px;
+  width: 65px;
   height: 50px;
   line-height: 50px;
   background-repeat: no-repeat;
@@ -10660,7 +10676,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-footer .row div.col-sm-12 {
   padding: 20px;
   width: 100%;
-  background-color: #95793e;
+  background-color: #a68c5a;
 }
 @media screen and (min-width: 480px) {
   .node.node-footer .row div.col-sm-12 {
@@ -10702,6 +10718,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   -ms-hyphens: auto;
   -o-hyphens: auto;
   hyphens: auto;
+  line-height: 24px;
 }
 .node.node-footer .row div.col-sm-12 .field-name-field-medienkontakt pre,
 .node.node-footer .row div.col-sm-12 .field-name-field-medienkontakt address {
@@ -10764,13 +10781,16 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 }
 .node.node-webform .row .col-sm-12 .field-name-field-slogan .field-item {
   font-family: 'ProximaNovaBold';
-  font-size: 30px;
-  line-height: 1;
+  font-size: 34px;
+  line-height: 38px;
+  letter-spacing: -0.02em;
   text-align: center;
 }
 @media screen and (min-width: 768px) {
   .node.node-webform .row .col-sm-12 .field-name-field-slogan .field-item {
-    font-size: 40px;
+    font-size: 52px;
+    line-height: 58px;
+    letter-spacing: -0.02em;
     text-align: left;
   }
 }
@@ -10784,7 +10804,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-webform .row .col-sm-12 .field-name-body h5,
 .node.node-webform .row .col-sm-12 .field-name-body h6 {
   font-family: 'ProximaNovaBold';
-  font-size: 16px;
+  font-size: 18px;
 }
 @media screen and (min-width: 480px) {
   .node.node-webform .row .col-sm-12 .field-name-body h1,
@@ -10793,7 +10813,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   .node.node-webform .row .col-sm-12 .field-name-body h4,
   .node.node-webform .row .col-sm-12 .field-name-body h5,
   .node.node-webform .row .col-sm-12 .field-name-body h6 {
-    font-size: 3.33333333vw;
+    font-size: 3.75vw;
   }
 }
 @media screen and (min-width: 768px) {
@@ -10828,7 +10848,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-webform .row .col-sm-12 .field-name-body p,
 .node.node-webform .row .col-sm-12 .field-name-body tbody td {
   font-family: 'ProximaNovaLight';
-  font-size: 16px;
+  font-size: 18px;
   -ms-word-break: break-all;
   word-break: break-word;
   -webkit-hyphens: auto;
@@ -10840,7 +10860,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 @media screen and (min-width: 480px) {
   .node.node-webform .row .col-sm-12 .field-name-body p,
   .node.node-webform .row .col-sm-12 .field-name-body tbody td {
-    font-size: 3.33333333vw;
+    font-size: 3.75vw;
   }
 }
 @media screen and (min-width: 768px) {
@@ -10852,12 +10872,12 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-webform .row .col-sm-12 .field-name-body pre,
 .node.node-webform .row .col-sm-12 .field-name-body address {
   font-family: 'ProximaNovaLight';
-  font-size: 16px;
+  font-size: 18px;
 }
 @media screen and (min-width: 480px) {
   .node.node-webform .row .col-sm-12 .field-name-body pre,
   .node.node-webform .row .col-sm-12 .field-name-body address {
-    font-size: 3.33333333vw;
+    font-size: 3.75vw;
   }
 }
 @media screen and (min-width: 768px) {
@@ -10894,7 +10914,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 }
 .node-webform.view-mode-mitmachen .row .col-sm-12 .field-name-field-slogan {
   margin-bottom: 50px;
-  color: #95793e;
+  color: #a68c5a;
 }
 .node-webform.view-mode-mitmachen .row .col-sm-12 .field-name-body {
   margin-bottom: 50px;
@@ -10946,13 +10966,14 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-page-banner .row .col-sm-12 .field-name-odometer .odometer-label {
   font-family: 'ProximaNovaBold';
   font-size: 18px;
+  letter-spacing: 0.05em;
   color: #fff;
-  text-shadow: 1px 1px 1px #000;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
 }
-.node.node-page-banner .row .col-sm-12 .field-name-odometer .odometer {
+.node.node-page-banner .row .col-sm-12 .field-name-odometer .odometer .odometer-inside {
   font-family: 'ProximaNovaBold';
-  font-size: 30px;
-  line-height: 1;
+  font-size: 32px;
+  line-height: 1.1;
 }
 .node.node-page-banner .row .col-sm-12 .field-name-odometer .odometer .odometer-inside .odometer-digit {
   display: inline-block;
@@ -10960,13 +10981,14 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   margin: 0 2px;
   padding: 0;
   width: 28px;
-  height: 32px;
+  height: 34px;
   color: #fff;
   background-color: #000;
 }
 .node.node-page-banner .row .col-sm-12 .field-name-odometer .odometer .odometer-inside .odometer-digit .odometer-digit-inner .odometer-ribbon .odometer-ribbon-inner .odometer-value {
-  text-align: left;
+  margin-top: -3px;
   padding-left: 5px;
+  text-align: left;
 }
 .node.node-page-banner .row .col-sm-12 .field-name-odometer .odometer .odometer-inside .odometer-formatting-mark {
   display: inline-block;
@@ -10977,7 +10999,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   .node.node-page-banner .row .col-sm-12 .field-name-odometer {
     margin-top: 30px;
   }
-  .node.node-page-banner .row .col-sm-12 .field-name-odometer .odometer {
+  .node.node-page-banner .row .col-sm-12 .field-name-odometer .odometer .odometer-inside {
     font-size: 50px;
   }
   .node.node-page-banner .row .col-sm-12 .field-name-odometer .odometer .odometer-inside .odometer-digit {
@@ -10995,12 +11017,14 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   left: 15px;
   padding: 10px;
   font-family: 'ProximaNovaBold';
-  font-size: 30px;
-  line-height: 1;
+  font-size: 34px;
+  line-height: 30px;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   white-space: nowrap;
   color: #fff;
-  background-color: #1aaa7e;
+  background-color: #2dba71;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 @media screen and (min-width: 768px) {
   .node.node-page-banner .row .col-sm-12 .field-name-field-slogan-row-one,
@@ -11008,7 +11032,8 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   .node.node-page-banner .row .col-sm-12 .field-name-field-slogan-row-three {
     left: 125px;
     padding: 8px 15px;
-    font-size: 50px;
+    font-size: 52px;
+    line-height: 42px;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -11031,6 +11056,67 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   display: none;
 }
 /*
+ *  Node spenden component
+ * --------------------------------------------------*/
+.node.node-spenden .row .col-sm-12 {
+  position: relative;
+  padding: 0;
+  width: 100%;
+}
+.node.node-spenden .row .col-sm-12 .field-name-title {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 10;
+}
+.node.node-spenden .row .col-sm-12 .field-name-title h2 {
+  margin: 0 0 20px;
+  font-family: 'ProximaNovaBold';
+  font-size: 18px;
+  letter-spacing: 1.2px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
+}
+@media screen and (min-width: 480px) {
+  .node.node-spenden .row .col-sm-12 .field-name-title h2 {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .node.node-spenden .row .col-sm-12 .field-name-title h2 {
+    top: 40px;
+    font-size: 24px;
+  }
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-images .field-item .carousel {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: auto;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-images .field-item .carousel > .carousel-inner {
+  margin-top: 0;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-images .field-item .carousel > .carousel-inner .item > div {
+  width: 100%;
+  height: 200px !important;
+}
+@media screen and (min-width: 768px) {
+  .node.node-spenden .row .col-sm-12 .field-name-field-images .field-item .carousel > .carousel-inner .item > div {
+    height: 200px !important;
+  }
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-images .field-item .carousel > .carousel-indicators {
+  display: none;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-images .field-item .carousel > a.carousel-control {
+  display: none;
+}
+/*
  *  View reasons component
  * --------------------------------------------------*/
 .view.view-reasons {
@@ -11042,9 +11128,10 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .view.view-reasons .view-header p {
   padding: 50px 0 30px;
   font-family: 'ProximaNovaBold';
-  font-size: 30px;
+  font-size: 34px;
+  line-height: 38px;
+  letter-spacing: -0.02em;
   text-align: center;
-  line-height: 1;
   border-top: 1px solid #c7c7c7;
 }
 @media screen and (min-width: 480px) {
@@ -11057,7 +11144,9 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
     padding: 0 80px;
   }
   .view.view-reasons .view-header p {
-    font-size: 40px;
+    font-size: 52px;
+    line-height: 58px;
+    letter-spacing: -0.02em;
     text-align: left;
   }
 }
@@ -11109,6 +11198,13 @@ header#navbar .container .navbar-header .navbar-toggle {
  * --------------------------------------------------*/
 .container {
   background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and (min-device-pixel-ratio: 1.25), only screen and (min-resolution: 200dpi), only screen and (min-resolution: 1.25dppx) {
+  .container {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
 }
 .container a {
   outline: none;
