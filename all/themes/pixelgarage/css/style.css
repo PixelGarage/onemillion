@@ -10903,6 +10903,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
  *  Node page banner component
  * --------------------------------------------------*/
 .node.node-page-banner .row .col-sm-12 {
+  cursor: pointer;
   position: relative;
   padding: 0;
   width: 100%;

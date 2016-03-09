@@ -7,6 +7,23 @@
 (function ($) {
 
   /**
+   * Allows full size clickable items.
+   */
+   Drupal.behaviors.fullSizeClickableItems = {
+    attach: function () {
+      var $clickableItems = $('.node-page-banner');
+
+      $clickableItems.once('click', function () {
+        $(this).on('click', function () {
+          var link = $(this).find('.field-name-field-link a').attr("href");
+          window.open(link);
+          return false;
+        });
+      });
+    }
+  };
+
+  /**
    * This behavior adds shadow to header on scroll.
    *
   Drupal.behaviors.addHeaderShadow = {
@@ -23,23 +40,6 @@
   };
    */
 
-
-  /**
-   * Allows full size clickable items.
-   Drupal.behaviors.fullSizeClickableItems = {
-    attach: function () {
-      var $clickableItems = $('.node-link-item.node-teaser .field-group-div')
-        .add('.node-team-member.node-teaser .field-group-div');
-
-      $clickableItems.once('click', function () {
-        $(this).on('click', function () {
-          window.location = $(this).find("a:first").attr("href");
-          return false;
-        });
-      });
-    }
-  };
-   */
 
   /**
    * Swaps images from black/white to colored on mouse hover.
