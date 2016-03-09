@@ -34,6 +34,11 @@
       <?php print render($share_buttons) ?>
     <?php endif; ?>
   </div>
+  <div class="confirmation-donate">
+    <?php if ($donate_buttons): ?>
+      <?php print render($donate_buttons) ?>
+    <?php endif; ?>
+  </div>
 </div>
 
 <div class="links">

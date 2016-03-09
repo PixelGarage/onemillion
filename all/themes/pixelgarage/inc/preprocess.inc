@@ -48,16 +48,20 @@ function pixelgarage_preprocess_webform_confirmation(&$vars) {
   // override links to go back to home
   $vars['url'] = url();
 
-  // get localized share node and render it
+  // get localized share and donate node and render it
   switch ($vars['node']->language) {
     case 'de':
       $nid_share = 28;
+      $nid_donate = 40;
       break;
     case 'fr':
       $nid_share = 39;
+      $nid_donate = 41;
       break;
   }
   $share = node_load($nid_share);
   $vars['share_buttons'] = node_view($share, 'full');
+  $donate = node_load($nid_donate);
+  $vars['donate_buttons'] = node_view($donate, 'full');
 }
 
