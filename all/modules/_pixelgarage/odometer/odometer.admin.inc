@@ -19,15 +19,22 @@ function odometer_admin_settings() {
   $form['odometer_value_period'] = array(
     '#type'         => 'fieldset',
     '#title'        => t('Timed value addition'),
-    '#description'   => t('A value is added to the odometer in a given time period. The value is linearly distributed in the given time period so that at the end date the whole value is added.'),
+    '#description'   => t('A time based value is added to the odometer in a given time period, starting with the addition of the start value at the start time and ending with the addition of the end value at the end time. In between the value is linearly increasing.'),
     '#collapsible'  => FALSE,
     '#collapsed'    => FALSE,
   );
-  $form['odometer_value_period']['odometer_time_based_value'] = array(
+  $form['odometer_value_period']['odometer_time_based_start_value'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Time based start value'),
+    '#default_value' => variable_get('odometer_time_based_start_value', 0),
+    '#description'   => t('The start value added at the beginning of the time period.'),
+    '#required' => TRUE,
+  );
+  $form['odometer_value_period']['odometer_time_based_end_value'] = array(
     '#type'          => 'textfield',
     '#title'         => t('Time based value'),
-    '#default_value' => variable_get('odometer_time_based_value', 0),
-    '#description'   => t('A time based value added over the given time period (linearly distributed).'),
+    '#default_value' => variable_get('odometer_time_based_end_value', 0),
+    '#description'   => t('The end value added at the end of the time period.'),
     '#required' => TRUE,
   );
   $form['odometer_value_period']['odometer_start_date'] = array(

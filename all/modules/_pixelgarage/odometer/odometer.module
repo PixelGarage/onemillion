@@ -173,8 +173,10 @@ function odometer_block_view($delta = 0) {
 function _odometer_element() {
   // calculate the time period value if any
   $number = 0;
-  $base_value = variable_get('odometer_time_based_value');
-  if ($base_value > 0) {
+  $start_value = variable_get('odometer_time_based_start_value', 0);
+  $end_value = variable_get('odometer_time_based_end_value', 0);
+  $diff_value = $end_value - $start_value;
+  if ($diff_value > 0) {
     $time_start = strtotime(variable_get('odometer_start_date'));
     $time_end = strtotime(variable_get('odometer_end_date'));
     $now = time();
@@ -182,7 +184,7 @@ function _odometer_element() {
     $diff_now = (float)max($now - $time_start, 0.0); // start counting when start date is past
     $diff_end = (float)max($time_end - $time_start, 1.0); // prevent dividion by zero
     $factor = min(1.0, $diff_now / $diff_end); // stop counting when end date is reached
-    $number = (int) ($base_value * $factor);
+    $number = (int) ($diff_value * $factor + $start_value);
   }
 
   // add the function value
