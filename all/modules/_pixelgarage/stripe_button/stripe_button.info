@@ -1,0 +1,9 @@
+name = Stripe button
+description = "Provides a stripe button field allowing to process credit card transaction via the Stripe service."
+core = 7.x
+package = Pixelgarage
+configure = admin/config/system/stripe_button
+
+dependencies[] = stripe_api
+
+version = "7.x-1.0"

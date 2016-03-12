@@ -1,0 +1,14 @@
+name = Stripe API
+description = Provides an integration to use the Stripe API library
+core = 7.x
+package = Stripe
+
+dependencies[] = libraries
+
+configure = admin/config/services/stripe_api
+; Information added by Drupal.org packaging script on 2016-01-28
+version = "7.x-1.0-alpha2"
+core = "7.x"
+project = "stripe_api"
+datestamp = "1454017740"
+

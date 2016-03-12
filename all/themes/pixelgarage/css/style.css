@@ -11242,6 +11242,13 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   height: auto;
   min-height: 350px;
 }
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden-10 {
+  position: absolute;
+  top: 120px;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden-10 .field-item {
+  display: inline-block;
+}
 /*
  *  View reasons component
  * --------------------------------------------------*/
