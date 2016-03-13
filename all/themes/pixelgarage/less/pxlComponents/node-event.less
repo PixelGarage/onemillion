@@ -1,0 +1,66 @@
+/*
+ *  Node Event component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+
+
+// General settings
+// -------------------------
+.node.node-article {
+  width: 100%;
+
+  .row {
+    div.col-sm-12 {
+      padding: 0;
+      width: 100%;
+
+      .field-name-field-image {
+        .field-item {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .field-name-title {
+        h2 {
+          margin: 20px 0 50px;
+          font-family: @pxl-title-font;
+          font-size: 20px;
+          line-height: 28px;
+          letter-spacing: 1.2px;
+          text-align: center;
+          color: @text-color;
+
+          @media @narrow {
+            font-size: 20px;
+          }
+          @media @tablet {
+            font-size: 24px;
+          }
+        }
+      }
+
+      .field-name-body {
+        #pxl-mixins.wysiwyg-body();
+        text-align: center;
+
+        a {
+          border-bottom: 1px solid @link-color;
+
+          &:hover, &.active, &:focus {
+            border-bottom: 1px solid @link-hover-color;
+          }
+        }
+      }
+
+    }
+  }
+}

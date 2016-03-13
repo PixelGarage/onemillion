@@ -11250,6 +11250,161 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   display: inline-block;
 }
 /*
+ *  Node Event component
+ * --------------------------------------------------*/
+.node.node-article {
+  width: 100%;
+}
+.node.node-article .row div.col-sm-12 {
+  padding: 0;
+  width: 100%;
+}
+.node.node-article .row div.col-sm-12 .field-name-field-image .field-item {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.node.node-article .row div.col-sm-12 .field-name-title h2 {
+  margin: 20px 0 50px;
+  font-family: 'ProximaNovaBold';
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 1.2px;
+  text-align: center;
+  color: #000000;
+}
+@media screen and (min-width: 480px) {
+  .node.node-article .row div.col-sm-12 .field-name-title h2 {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .node.node-article .row div.col-sm-12 .field-name-title h2 {
+    font-size: 24px;
+  }
+}
+.node.node-article .row div.col-sm-12 .field-name-body {
+  text-align: center;
+}
+.node.node-article .row div.col-sm-12 .field-name-body h1,
+.node.node-article .row div.col-sm-12 .field-name-body h2,
+.node.node-article .row div.col-sm-12 .field-name-body h3,
+.node.node-article .row div.col-sm-12 .field-name-body h4,
+.node.node-article .row div.col-sm-12 .field-name-body h5,
+.node.node-article .row div.col-sm-12 .field-name-body h6 {
+  font-family: 'ProximaNovaBold';
+  font-size: 18px;
+}
+@media screen and (min-width: 480px) {
+  .node.node-article .row div.col-sm-12 .field-name-body h1,
+  .node.node-article .row div.col-sm-12 .field-name-body h2,
+  .node.node-article .row div.col-sm-12 .field-name-body h3,
+  .node.node-article .row div.col-sm-12 .field-name-body h4,
+  .node.node-article .row div.col-sm-12 .field-name-body h5,
+  .node.node-article .row div.col-sm-12 .field-name-body h6 {
+    font-size: 3.75vw;
+  }
+}
+@media screen and (min-width: 768px) {
+  .node.node-article .row div.col-sm-12 .field-name-body h1,
+  .node.node-article .row div.col-sm-12 .field-name-body h2,
+  .node.node-article .row div.col-sm-12 .field-name-body h3,
+  .node.node-article .row div.col-sm-12 .field-name-body h4,
+  .node.node-article .row div.col-sm-12 .field-name-body h5,
+  .node.node-article .row div.col-sm-12 .field-name-body h6 {
+    font-size: 20px;
+  }
+}
+.node.node-article .row div.col-sm-12 .field-name-body h1,
+.node.node-article .row div.col-sm-12 .field-name-body h2,
+.node.node-article .row div.col-sm-12 .field-name-body h3 {
+  font-size: 20px;
+}
+@media screen and (min-width: 480px) {
+  .node.node-article .row div.col-sm-12 .field-name-body h1,
+  .node.node-article .row div.col-sm-12 .field-name-body h2,
+  .node.node-article .row div.col-sm-12 .field-name-body h3 {
+    font-size: 4.16666667vw;
+  }
+}
+@media screen and (min-width: 768px) {
+  .node.node-article .row div.col-sm-12 .field-name-body h1,
+  .node.node-article .row div.col-sm-12 .field-name-body h2,
+  .node.node-article .row div.col-sm-12 .field-name-body h3 {
+    font-size: 32px;
+  }
+}
+.node.node-article .row div.col-sm-12 .field-name-body p,
+.node.node-article .row div.col-sm-12 .field-name-body tbody td {
+  font-family: 'ProximaNovaLight';
+  font-size: 18px;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;
+}
+@media screen and (min-width: 480px) {
+  .node.node-article .row div.col-sm-12 .field-name-body p,
+  .node.node-article .row div.col-sm-12 .field-name-body tbody td {
+    font-size: 3.75vw;
+  }
+}
+@media screen and (min-width: 768px) {
+  .node.node-article .row div.col-sm-12 .field-name-body p,
+  .node.node-article .row div.col-sm-12 .field-name-body tbody td {
+    font-size: 20px;
+  }
+}
+.node.node-article .row div.col-sm-12 .field-name-body pre,
+.node.node-article .row div.col-sm-12 .field-name-body address {
+  font-family: 'ProximaNovaLight';
+  font-size: 18px;
+}
+@media screen and (min-width: 480px) {
+  .node.node-article .row div.col-sm-12 .field-name-body pre,
+  .node.node-article .row div.col-sm-12 .field-name-body address {
+    font-size: 3.75vw;
+  }
+}
+@media screen and (min-width: 768px) {
+  .node.node-article .row div.col-sm-12 .field-name-body pre,
+  .node.node-article .row div.col-sm-12 .field-name-body address {
+    font-size: 20px;
+  }
+}
+.node.node-article .row div.col-sm-12 .field-name-body strong {
+  font-family: 'ProximaNovaBold';
+}
+.node.node-article .row div.col-sm-12 .field-name-body hr {
+  border: 0;
+  border-bottom: 2px solid #000000;
+  background: none;
+}
+.node.node-article .row div.col-sm-12 .field-name-body img,
+.node.node-article .row div.col-sm-12 .field-name-body embed,
+.node.node-article .row div.col-sm-12 .field-name-body video,
+.node.node-article .row div.col-sm-12 .field-name-body audio,
+.node.node-article .row div.col-sm-12 .field-name-body iframe {
+  display: block;
+  overflow: hidden;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 100%;
+  height: auto;
+  min-height: 350px;
+}
+.node.node-article .row div.col-sm-12 .field-name-body a {
+  border-bottom: 1px solid #a68c5a;
+}
+.node.node-article .row div.col-sm-12 .field-name-body a:hover,
+.node.node-article .row div.col-sm-12 .field-name-body a.active,
+.node.node-article .row div.col-sm-12 .field-name-body a:focus {
+  border-bottom: 1px solid #645436;
+}
+/*
  *  View reasons component
  * --------------------------------------------------*/
 .view.view-reasons {
