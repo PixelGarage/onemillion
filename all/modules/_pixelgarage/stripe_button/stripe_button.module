@@ -42,10 +42,10 @@ function stripe_button_ajax_callback() {
 
   // get the credit card details
   $token = $_POST['stripeToken'];
-  $button_id = $_POST['id'];
+  $button_id = $_POST['btnID'];
   $amount = $_POST['amount'];
   $currency = $_POST['currency'];
-  $email = $token['email'];
+  $email = $_POST['email'];
   $date = date('r'); // e.g. Thu, 21 Dec 2000 16:01:07 +0200
   $desc = t('@site charged you (@user) with @amount @curr on @date', array(
     '@site' => variable_get('site_name'),
@@ -61,7 +61,7 @@ function stripe_button_ajax_callback() {
     $charge = \Stripe\Charge::create(array(
       "amount" => $amount,
       "currency" => $currency,
-      "source" => $token['id'],  // only token id!
+      "source" => $token,
       "description" => $desc,
       "receipt_email" => $email
     ));
@@ -115,11 +115,20 @@ function stripe_button_theme($existing, $type, $theme, $path) {
         'csp' => FALSE,
       ),
     ),
+    'stripe_button_custom_value' => array(
+      'function' => 'theme_stripe_button_custom_value',
+      'variables' => array(
+        'id' => NULL,
+        'amount' => NULL,
+        'currency' => NULL,
+        'csp' => FALSE,
+      ),
+    ),
   );
 }
 
 /**
- * Themes a Stripe Checkout button with a given amount and currency.
+ * Themes a Stripe Checkout button with a predefined amount in a given currency.
  */
 function theme_stripe_button_fix_value($variables) {
   // Render Stripe Checkout button
@@ -134,22 +143,44 @@ function theme_stripe_button_fix_value($variables) {
     // create HTML button
     $currency = strtoupper($variables['currency']);
     $label = t('@amount @currency', array('@amount' => $variables['amount'], '@currency' => $currency));
-    $output = '<button id="' . $variables['id'] . '" class="btn btn-normal stripe-button">' . $label . '</button>';
+    $output = '<button id="' . $variables['id'] .
+      '" class="btn btn-normal stripe-button">' .
+      $label .
+      '</button>';
   }
   else if ($variables['amount'] == 0) {
     //
     // successful payment, create success button (disabled)
-    $label = t("Paid. Thanks.");
-    $output = '<button id="' . $variables['id'] . '" class="btn btn-success stripe-button" disabled>' . $label . '</button>';
+    $label = t("Paid. Thank you.");
+    $output = '<button id="' . $variables['id'] .
+      '" class="btn btn-success stripe-button" disabled>' .
+      $label .
+      '</button>';
   }
   else {
     //
     // failed payment, create fail button (disabled)
     $label = t("NOT Paid. Sorry!");
-    $output = '<button id="' . $variables['id'] . '" class="btn btn-warning stripe-button" disabled>' . $label . '</button>';
+    $output = '<button id="' . $variables['id'] .
+      '" class="btn btn-warning stripe-button" disabled>' .
+      $label .
+      '</button>';
   }
 
   return $output;
+}
+
+/**
+ * Themes a Stripe Checkout button with a customizable amount in a given currency.
+ *
+ * The custom button is an AJAX form collecting a user defined amount. The process:
+ * 1) The form submission sends the collected amount to the server
+ * 2) a predefined Stripe button with the given value is created and sent back to the client browser
+ * 3) The button is clicked programmatically in the AJAX response.
+ * 4) The predefined button process starts.
+ */
+function theme_stripe_button_custom_value($variables) {
+
 }
 
 
@@ -169,22 +200,28 @@ function stripe_button_field_formatter_info() {
       'label' => t('Fixed value stripe button'),
       'field types' => array('number_decimal'),
       'settings'  => array(
-        //Array of the settings we'll create
+        // Array of the settings to be defined
         'stripe_button_name' => '',
         'stripe_button_description' => '',
         'stripe_button_currency' => 'CHF',
         'stripe_button_label' => '',
+        'stripe_button_billing' => 0,
+        'stripe_button_shipping' => 0,
+        'stripe_button_remember' => 0,
       ),
     ),
     'stripe_button_custom' => array(
       'label' => t('Customizable stripe button'),
       'field types' => array('number_decimal'),
       'settings'  => array(
-        //Array of the settings we'll create
+        // Array of the settings to be defined
         'stripe_button_name' => '',
         'stripe_button_description' => '',
         'stripe_button_currency' => 'CHF',
         'stripe_button_label' => '',
+        'stripe_button_billing' => 0,
+        'stripe_button_shipping' => 0,
+        'stripe_button_remember' => 0,
       ),
     ),
   );
@@ -204,31 +241,47 @@ function stripe_button_field_formatter_settings_form($field, $instance, $view_mo
       'EUR' => t('EUR'),
       'USD' => t('USD'),
     );
-    $element['stripe_button_name'] = array(
-      '#type'          => 'textfield',
-      '#title'         => t('Company name'),
-      '#default_value' => $settings['stripe_button_name'],
-      '#description'   => t('Defines the company name shown in the dialog.'),
-      '#required' => TRUE,
-    );
-    $element['stripe_button_description'] = array(
-      '#type'          => 'textfield',
-      '#title'         => t('Description'),
-      '#default_value' => $settings['stripe_button_description'],
-      '#description'   => t('Defines the description shown in the dialog.'),
-      '#required' => TRUE,
-    );
     $element['stripe_button_currency'] = array(
       '#type' => 'select',
       '#title' => t('Currency'),
       '#options' => $options,
       '#default_value' => $settings['stripe_button_currency'],
     );
+    $element['stripe_button_name'] = array(
+      '#type'          => 'textfield',
+      '#title'         => t('Company name'),
+      '#default_value' => $settings['stripe_button_name'],
+      '#description'   => t('Define the company name shown in the dialog. Default: Site name'),
+    );
+    $element['stripe_button_description'] = array(
+      '#type'          => 'textfield',
+      '#title'         => t('Description'),
+      '#default_value' => $settings['stripe_button_description'],
+      '#description'   => t('Define the description shown in the dialog. Default: none'),
+    );
     $element['stripe_button_label'] = array(
       '#type'          => 'textfield',
       '#title'         => t('Button label'),
       '#default_value' => $settings['stripe_button_label'],
-      '#description'   => t("Defines the button label of the dialog submit button."),
+      '#description'   => t("Define the button label of the Stripe dialog submit button. Default: none"),
+    );
+    $element['stripe_button_billing'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Request for billing address.'),
+      '#default_value' => $settings['stripe_button_billing'],
+      '#description'   => t("Specify whether Checkout should collect the user's billing address. Default: false"),
+    );
+    $element['stripe_button_shipping'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Request for shipping address.'),
+      '#default_value' => $settings['stripe_button_shipping'],
+      '#description'   => t("Specify whether Checkout should collect the user's shipping address. Default: false"),
+    );
+    $element['stripe_button_remember'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Remember the customer.'),
+      '#default_value' => $settings['stripe_button_remember'],
+      '#description'   => t("Specify whether to include the option to 'Remember Me' for future purchases. Default: false"),
     );
   }
 
@@ -244,9 +297,12 @@ function stripe_button_field_formatter_settings_summary($field, $instance, $view
 
   $summary = array();
   if ($display['type'] == 'stripe_button_fixed' || $display['type'] == 'stripe_button_custom') {
+    $summary[] = t('Currency:             @curr', array('@curr' => $settings['stripe_button_currency']));
     $summary[] = t('Company name:         @name', array('@name' => $settings['stripe_button_name']));
     $summary[] = t('Product description:  @desc', array('@desc' => $settings['stripe_button_description']));
-    $summary[] = t('Currency:             @curr', array('@curr' => $settings['stripe_button_currency']));
+    $summary[] = t('Billing address:      @desc', array('@desc' => ($settings['stripe_button_billing'] == 1) ? 'yes' : 'no'));
+    $summary[] = t('Shipping address:     @desc', array('@desc' => ($settings['stripe_button_shipping'] == 1) ? 'yes' : 'no'));
+    $summary[] = t('Remember user:        @desc', array('@desc' => ($settings['stripe_button_remember'] == 1) ? 'yes' : 'no'));
   }
 
   return implode('<br />', $summary);
@@ -277,52 +333,68 @@ function stripe_button_field_formatter_view($entity_type, $entity, $field, $inst
 
   // create stripe button render array
   $stripe_buttons = array();
+  $button_settings = array(
+    'description' => $settings['stripe_button_description'] ? t($settings['stripe_button_description']) : '',
+    'currency' => $settings['stripe_button_currency'],
+    'buttonLabel' => $settings['stripe_button_label'] ? t($settings['stripe_button_label']) : '',
+    'zipCode' => 0,
+    'billingAddress' => $settings['stripe_button_billing'],
+    'shippingAddress' => $settings['stripe_button_shipping'],
+    'allowRememberMe' => $settings['stripe_button_remember'],
+  );
   switch ($display['type']) {
     // This formatter outputs a button with the number as label.
     case 'stripe_button_fixed':
       foreach ($items as $delta => $item) {
+        // set button specific values
         $amount = $item['value'];
         $button_id = drupal_clean_css_identifier($field_name . '-' . $delta);
-        $button_settings = array(
-          'description' => t($settings['stripe_button_description']),
-          'currency' => $settings['stripe_button_currency'],
-          'amount' => $amount*100,
-          'buttonLabel' => t($settings['stripe_button_label']),
-          'zipCode' => 0,
-          'billingAddress' => 0,
-          'shippingAddress' => 0,
-          'allowRememberMe' => 1,
-        );
+
+        // add button with its settings
+        $button_settings['amount'] = $amount*100;  // Stripe needs cents (Rappen) as value
         $stripe_buttons[$button_id] = $button_settings;
 
+        // create button render array
         $element[$delta] = array(
           '#theme' => 'stripe_button_fix_value',
           '#id' => $button_id,
           '#amount' => $amount,
-          '#currency' => $settings['stripe_button_currency'],
+          '#currency' => $button_settings['currency'],
           '#csp' => false,
         );
       }
       break;
     case 'stripe_button_custom':
       foreach ($items as $delta => $item) {
+        // prevent more than one item for customizable button
+        if ($delta > 0) break;
+
+        // set button specific values
+        $amount = $item['value']; // preset value possibly changed by user
+        $button_id = drupal_clean_css_identifier($field_name . '-' . $delta);
+
+        // add button with its settings
+        $button_settings['amount'] = $amount*100;  // Stripe needs cents (Rappen) as value
+        $stripe_buttons[$button_id] = $button_settings;
+
+        // create button render array
         $element[$delta] = array(
-          // We create a render array to produce the desired markup,
-          // "<button data-stripe-amount="xy">xy @currency</button>".
-          '#type' => 'markup',
-          '#markup' => '',
-          '#prefix' => '<div class="stripe-button-container">',
-          '#suffix' => '</div>',
+          '#theme' => 'stripe_button_custom_value',
+          '#id' => $button_id,
+          '#amount' => $amount,
+          '#currency' => $button_settings['currency'],
+          '#csp' => false,
         );
       }
       break;
   }
 
-  // add javascript and drupal settings
+  // add Checkout javascript
   $path = drupal_get_path('module', 'stripe_button');
-
   drupal_add_js(STRIPE_CHECKOUT_JS_PATH, 'external');
   drupal_add_js($path . '/js/stripe_button.js');
+
+  // add Drupal js settings (Drupal settings are merged for multiple buttons)
   $js_settings['stripe_button']['stripe_buttons'] = $stripe_buttons;
   drupal_add_js($js_settings, 'setting');
 
