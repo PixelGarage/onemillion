@@ -11,7 +11,7 @@
    */
    Drupal.behaviors.fullSizeClickableItems = {
     attach: function () {
-      var $clickableItems = $('.node-page-banner');
+      var $clickableItems = $('.node-page-banner').add('.node-article');
 
       $clickableItems.once('click', function () {
         $(this).on('click', function () {

@@ -11256,6 +11256,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   width: 100%;
 }
 .node.node-article .row div.col-sm-12 {
+  cursor: pointer;
   padding: 0;
   width: 100%;
 }
@@ -11263,6 +11264,9 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   display: block;
   width: 100%;
   height: auto;
+}
+.node.node-article .row div.col-sm-12 .field-name-field-link {
+  display: none;
 }
 .node.node-article .row div.col-sm-12 .field-name-title h2 {
   margin: 20px 0 50px;
