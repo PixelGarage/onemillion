@@ -47,6 +47,9 @@
                   else {
                     // do NOT attach behaviours to button, it is disabled
                     //Drupal.attachBehaviors($fieldItemDiv);
+
+                    // initialize error popovers for returned error buttons
+                    $fieldItemDiv.find('[data-toggle="popover"]').popover();
                   }
                 });
               }

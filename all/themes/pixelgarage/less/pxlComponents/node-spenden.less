@@ -45,7 +45,7 @@
 
 .resp-spenden-button(@size: @font-size-large; @color: @webform-color-submit; @bg-color: @webform-bg-color-submit; @radius: @border-radius-large) {
   display: inline-block;
-  padding: 6px 15px;
+  padding: 7px 15px;
   font-family: @pxl-text-font-bold;
   font-size: @size;
   line-height: 1;
@@ -70,7 +70,6 @@
   .row {
     .col-sm-12 {
       position: relative;
-      overflow: hidden;
       padding: 0;
       width: 100%;
       height: 200px;
@@ -113,9 +112,9 @@
         }
       }
 
-      .field-name-field-spenden-predefined {
-        position: absolute;
-        top: 70px;
+      .field-type-number-decimal {
+        // stripe buttons
+        position: relative;
         width: 100%;
         z-index: 10;
 
@@ -124,6 +123,7 @@
 
           .field-item {
             display: inline-block;
+            vertical-align: top;
             margin: 0 2px;
 
             @media @narrow {
@@ -132,94 +132,133 @@
 
             .stripe-button {
               // thestripe button with the given amount
-              .resp-spenden-button(22px, #fff, @pxl-color-green, 4px);
+              .resp-spenden-button(20px, #fff, @pxl-color-green, 4px);
+
+              &.btn-warning {
+                background-color: @pxl-color-warning;
+              }
+
+              &[disabled] {
+                opacity: 1.0;
+              }
+            }
+
+            //
+            // item form to get custom amount
+            form {
+              width: 100%;
+              margin: 0 auto;
+
+              .input-group {
+                display: inline-block;
+                vertical-align: top;
+                margin: 0 -2px;
+                padding: 0;
+                width: auto;
+                font-family: @pxl-text-font;
+                font-size: 20px;
+                letter-spacing: 0;
+
+                .input-group-addon {
+                  display: inline-block;
+                  vertical-align: top;
+                  padding: 6px 5px;
+                  height: 34px;
+                  width: 50px;
+                  font-family: @pxl-text-font;
+                  color: @text-color;
+                  border: none;
+                  border-right: 1px solid @pxl-color-border-light;
+                  background-color: #fff;
+                }
+
+                .form-item-stripe-button-custom-amount {
+                  display: inline-block;
+                  vertical-align: top;
+                  padding: 0;
+                  width: 100px;
+                  color: @text-color;
+                  text-align: right;
+
+                  label {
+                    display: none;
+                  }
+
+                  input.form-text {
+                    padding: 6px 5px;
+                    height: 34px;
+                    text-align: right;
+                    #pxl-mixins.border-radius(0);
+                    border: none;
+
+                    &:focus {
+                      border: 1px solid @pxl-color-green;
+                      box-shadow: 1px 1px 1px #aaa inset;
+                    }
+                  }
+                }
+              }
+
+              button.form-submit {
+                display: inline-block;
+                vertical-align: top;
+                .resp-spenden-button(20px, #fff, @pxl-color-green, 4px);
+                margin: 0 0 0 -4px;
+                .border-left-radius(0);
+              }
+            }
+
+            //
+            // error items
+            .label.stripe-message {
+              // stripe message
+              display: block;
+              white-space: normal;
+              max-width: 150px;
+
+              &.label-warning {
+                background-color: @pxl-color-warning;
+              }
+            }
+
+            .popover {
+              // stripe popover
+              font-family: @pxl-text-font;
+              letter-spacing: 1.2px;
+              text-align: left;
+              color: #fff;
+              border: none;
+              background: none;
+
+              .arrow {
+              }
+
+              .popover-title {
+                padding: 4px 14px;
+                font-family: @pxl-title-font;
+                font-size: 80%;
+                border:none;
+              }
+
+              .popover-content {
+                padding: 4px 14px;
+                font-size: 80%;
+                #pxl-mixins.border-radius(0 0 5px 5px);
+                background-color: @pxl-color-warning;
+              }
             }
           }
         }
       }
 
+      .field-name-field-spenden-predefined {
+        position: absolute;
+        top: 70px;
+      }
+
       .field-name-field-spenden {
         position: absolute;
         top: 130px;
-        width: 100%;
-        z-index: 10;
-
-        .field-items {
-          text-align: center;
-
-          .field-item {
-            display: inline-block;
-
-            .stripe-button {
-              // thestripe button with the given amount
-              .resp-spenden-button(22px, #fff, @pxl-color-green, 4px);
-            }
-
-            #form-field-spenden-0 {
-              // form to get custom amount
-              width: 100%;
-              margin: 0 auto;
-
-              form {
-                .input-group {
-                  display: inline-block;
-                  margin: 0 -2px;
-                  padding: 0;
-                  width: auto;
-                  font-family: @pxl-text-font;
-                  font-size: 22px;
-                  letter-spacing: 0;
-
-                  .input-group-addon {
-                    display: inline-block;
-                    vertical-align: top;
-                    padding: 6px 5px;
-                    height: 34px;
-                    width: 50px;
-                    font-family: @pxl-text-font;
-                    color: #fff;
-                    border: none;
-                    background-color: @pxl-color-border-light;
-                  }
-
-                  .form-item-stripe-button-custom-amount {
-                    display: inline-block;
-                    vertical-align: top;
-                    padding: 0;
-                    width: 100px;
-                    color: @text-color;
-                    text-align: right;
-
-                    label {
-                      display: none;
-                    }
-
-                    input.form-text {
-                      padding: 6px 5px;
-                      height: 34px;
-                      text-align: right;
-                      #pxl-mixins.border-radius(0);
-                      border: none;
-
-                      &:focus {
-                        border: 1px solid @pxl-color-green;
-                        box-shadow: 1px 1px 1px #aaa inset;
-                      }
-                    }
-                  }
-                }
-
-                button.form-submit {
-                  display: inline-block;
-                  .resp-spenden-button(22px, #fff, @pxl-color-green, 4px);
-                  margin: 0 0 0 -4px;
-                  .border-left-radius(0);
-                }
-              }
-            }
-          }
-        }
-
       }
 
       .field-name-body {

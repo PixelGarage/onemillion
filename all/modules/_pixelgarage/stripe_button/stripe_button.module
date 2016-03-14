@@ -87,19 +87,20 @@ function stripe_button_token_callback() {
   // create button (amount > 0 means normal button, amount == 0 means success button, amount < 0 means failure button)
   $success = !$msg ? 0 : -1;
   $button = theme('stripe_button_fix_value', array(
-    'id' => $button_id,
-    'amount' => $success,
-    'currency' => $currency,
+      'id' => $button_id,
+      'amount' => $success,
+      'currency' => $currency,
+      'message' => $msg,
     )
   );
 
   // create error message
-  $errorMsg  = $msg ? '<div class="label label-warning stripe-message">' . t("Error: @msg", array('@msg'=>$msg)) . '</div>' : '';
+  //$errorMsg  = $msg ? '<div class="label label-warning stripe-message">' . t("Error: @msg", array('@msg'=>$msg)) . '</div>' : '';
 
   // send answer to client
   drupal_add_http_header('Content-Type', 'text/html; charset=utf-8');
   print $button;
-  print $errorMsg;
+  //print $errorMsg;
   drupal_exit();
 }
 
@@ -153,6 +154,7 @@ function stripe_button_theme($existing, $type, $theme, $path) {
         'amount' => NULL,
         'currency' => NULL,
         'csp' => FALSE,
+        'message' => NULL,
       ),
     ),
     'stripe_button_custom_value' => array(
@@ -184,26 +186,27 @@ function theme_stripe_button_fix_value($variables) {
     $currency = strtoupper($variables['currency']);
     $amount = $variables['amount'] * 100 / 100; // no decimal value if not needed
     $label = t('@amount @currency', array('@amount' => $amount, '@currency' => $currency));
-    $output = '<button id="' . $variables['id'] .
-      '" class="btn btn-normal stripe-button">' .
+    $output = '<button id="' . $variables['id'] . '" type="button"' .
+      ' class="btn btn-normal stripe-button">' .
       $label .
       '</button>';
   }
   else if ($variables['amount'] == 0) {
     //
     // successful payment, create success button (disabled)
-    $label = t("Paid. Thank you.");
-    $output = '<button id="' . $variables['id'] .
-      '" class="btn btn-success stripe-button" disabled>' .
+    $label = t("Paid.");
+    $output = '<button id="' . $variables['id'] . '" type="button"' .
+      ' class="btn btn-success stripe-button" disabled>' .
       $label .
       '</button>';
   }
   else {
     //
     // failed payment, create fail button (disabled)
-    $label = t("NOT Paid. Sorry!");
-    $output = '<button id="' . $variables['id'] .
-      '" class="btn btn-warning stripe-button" disabled>' .
+    $label = t("NOT Paid!");
+    $output = '<button id="' . $variables['id'] . '" type="button"' .
+      ' class="btn btn-warning stripe-button" data-toggle="popover" data-trigger="hover" data-placement="auto bottom"'.
+      ' title="Stripe Error" data-content="' . $variables['message']. '">' .
       $label .
       '</button>';
   }
