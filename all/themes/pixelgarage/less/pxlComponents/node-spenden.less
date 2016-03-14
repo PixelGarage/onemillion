@@ -43,6 +43,25 @@
   }
 }
 
+.resp-spenden-button(@size: @font-size-large; @color: @webform-color-submit; @bg-color: @webform-bg-color-submit; @radius: @border-radius-large) {
+  display: inline-block;
+  padding: 6px 15px;
+  font-family: @pxl-text-font-bold;
+  font-size: @size;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  color: @color;
+  outline: none;
+  opacity: 1.0;
+  #pxl-mixins.border-radius(@radius);
+  border: none;
+  background-color: @bg-color;
+
+  &:hover, &:focus {
+    opacity: 0.7;
+  }
+}
 
 
 // General settings
@@ -94,6 +113,115 @@
         }
       }
 
+      .field-name-field-spenden-predefined {
+        position: absolute;
+        top: 70px;
+        width: 100%;
+        z-index: 10;
+
+        .field-items {
+          text-align: center;
+
+          .field-item {
+            display: inline-block;
+            margin: 0 2px;
+
+            @media @narrow {
+              margin: 0 10px;
+            }
+
+            .stripe-button {
+              // thestripe button with the given amount
+              .resp-spenden-button(22px, #fff, @pxl-color-green, 4px);
+            }
+          }
+        }
+      }
+
+      .field-name-field-spenden {
+        position: absolute;
+        top: 130px;
+        width: 100%;
+        z-index: 10;
+
+        .field-items {
+          text-align: center;
+
+          .field-item {
+            display: inline-block;
+
+            .stripe-button {
+              // thestripe button with the given amount
+              .resp-spenden-button(22px, #fff, @pxl-color-green, 4px);
+            }
+
+            #form-field-spenden-0 {
+              // form to get custom amount
+              width: 100%;
+              margin: 0 auto;
+
+              form {
+                .input-group {
+                  display: inline-block;
+                  margin: 0 -2px;
+                  padding: 0;
+                  width: auto;
+                  font-family: @pxl-text-font;
+                  font-size: 22px;
+                  letter-spacing: 0;
+
+                  .input-group-addon {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 6px 5px;
+                    height: 34px;
+                    width: 50px;
+                    font-family: @pxl-text-font;
+                    color: #fff;
+                    border: none;
+                    background-color: @pxl-color-border-light;
+                  }
+
+                  .form-item-stripe-button-custom-amount {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 0;
+                    width: 100px;
+                    color: @text-color;
+                    text-align: right;
+
+                    label {
+                      display: none;
+                    }
+
+                    input.form-text {
+                      padding: 6px 5px;
+                      height: 34px;
+                      text-align: right;
+                      #pxl-mixins.border-radius(0);
+                      border: none;
+
+                      &:focus {
+                        border: 1px solid @pxl-color-green;
+                        box-shadow: 1px 1px 1px #aaa inset;
+                      }
+                    }
+                  }
+                }
+
+                button.form-submit {
+                  display: inline-block;
+                  .resp-spenden-button(22px, #fff, @pxl-color-green, 4px);
+                  margin: 0 0 0 -4px;
+                  .border-left-radius(0);
+                }
+              }
+            }
+          }
+        }
+
+      }
+
       .field-name-body {
         position: absolute;
         top: 60px;
@@ -106,17 +234,6 @@
         z-index: 10;
       }
 
-      .field-name-field-spenden-10 {
-        position: absolute;
-        top: 120px;
-
-        .field-item {
-          display: inline-block;
-          .stripe-button {
-
-          }
-        }
-      }
     }
   }
 }

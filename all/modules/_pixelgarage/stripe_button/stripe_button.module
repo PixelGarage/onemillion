@@ -19,16 +19,22 @@ function stripe_button_menu() {
   $items['stripe/ajax/token'] = array(
     'type' => MENU_CALLBACK,
     'access callback' => TRUE,
-    'page callback' => 'stripe_button_ajax_callback',
+    'page callback' => 'stripe_button_token_callback',
   );
 
+  // handles AJAX stripe button request
+  $items['stripe/ajax/button'] = array(
+    'type' => MENU_CALLBACK,
+    'access callback' => TRUE,
+    'page callback' => 'stripe_button_custom_form_callback',
+  );
   return $items;
 }
 
 /**
  * AJAX callback function of the stripe token creation.
  */
-function stripe_button_ajax_callback() {
+function stripe_button_token_callback() {
   // load stripe php library
   $library = libraries_load('stripe');
   if (!$library['loaded']) {
@@ -97,10 +103,44 @@ function stripe_button_ajax_callback() {
   drupal_exit();
 }
 
+/**
+ * AJAX callback of the stripe button custom form.
+ */
+function stripe_button_custom_form_callback () {
+  // update the user specified amount
+  $button_id = $_POST['btnID'];
+  $new_amount = $_POST['newAmount'];
+  $currency = $_POST['currency'];
+
+  // create predefined stripe button with the new user amount
+  $button = theme('stripe_button_fix_value', array(
+      'id' => $button_id,
+      'amount' => $new_amount,
+      'currency' => $currency,
+    )
+  );
+
+  // send answer to client
+  drupal_add_http_header('Content-Type', 'text/html; charset=utf-8');
+  print $button;
+  drupal_exit();
+}
 
 /* =============================================================================
- *   Stripe button theme
+ *   Stripe button themes
  * ========================================================================== */
+/**
+ * Session wide data container.
+ *
+ * @return array Returns the session data array.
+ */
+function &stripe_button_session_data() {
+  if (!isset($_SESSION['stripe_button'])) {
+    $_SESSION['stripe_button'] = array();
+  }
+  return $_SESSION['stripe_button'];
+}
+
 /**
  * Implements hook_theme().
  */
@@ -142,7 +182,8 @@ function theme_stripe_button_fix_value($variables) {
 
     // create HTML button
     $currency = strtoupper($variables['currency']);
-    $label = t('@amount @currency', array('@amount' => $variables['amount'], '@currency' => $currency));
+    $amount = $variables['amount'] * 100 / 100; // no decimal value if not needed
+    $label = t('@amount @currency', array('@amount' => $amount, '@currency' => $currency));
     $output = '<button id="' . $variables['id'] .
       '" class="btn btn-normal stripe-button">' .
       $label .
@@ -170,6 +211,8 @@ function theme_stripe_button_fix_value($variables) {
   return $output;
 }
 
+
+
 /**
  * Themes a Stripe Checkout button with a customizable amount in a given currency.
  *
@@ -180,8 +223,53 @@ function theme_stripe_button_fix_value($variables) {
  * 4) The predefined button process starts.
  */
 function theme_stripe_button_custom_value($variables) {
+  // store theme variables in session
+  $session_data = &stripe_button_session_data();
+  $session_data['button_id'] = $variables['id'];
+  $session_data['amount'] = $variables['amount'];
+  $session_data['currency'] = $variables['currency'];
 
+  // create custom amount form
+  $output = drupal_render(drupal_get_form('stripe_button_custom_form'));
+
+  return $output;
 }
+
+/**
+ * Creates the form presenting a customizable amount field and button.
+ */
+function stripe_button_custom_form($form, &$form_state) {
+  // get form values
+  $session_data = &stripe_button_session_data();
+  $form_id = $session_data['button_id'];
+  $amount = $session_data['amount'];
+  $currency = $session_data['currency'];
+  unset($session_data['button_id']);
+  unset($session_data['amount']);
+  unset($session_data['currency']);
+
+  // add wrapper to entire form
+  $form['#prefix'] = '<div id="form-' . $form_id . '">';
+  $form['#suffix'] = '</div>';
+  $form['stripe_button_custom_amount'] = array(
+    '#type' => 'textfield',
+    '#default_value' => $amount,
+    '#title' => t('Amount'),
+    '#title_display' => 'invisible',
+    '#size' => 7,
+    '#weight' => 0,
+    '#prefix' => '<div class="input-group"><div class="input-group-addon">'. $currency . '</div>',
+    '#suffix' => '</div>',
+  );
+  $form['stripe_button_custom_submit'] = array(
+    '#type' => 'button',
+    '#value' => t('Pay'),
+    '#weight' => 1,
+  );
+
+  return $form;
+}
+
 
 
 /* =============================================================================
@@ -303,6 +391,7 @@ function stripe_button_field_formatter_settings_summary($field, $instance, $view
     $summary[] = t('Billing address:      @desc', array('@desc' => ($settings['stripe_button_billing'] == 1) ? 'yes' : 'no'));
     $summary[] = t('Shipping address:     @desc', array('@desc' => ($settings['stripe_button_shipping'] == 1) ? 'yes' : 'no'));
     $summary[] = t('Remember user:        @desc', array('@desc' => ($settings['stripe_button_remember'] == 1) ? 'yes' : 'no'));
+    $summary[] = t('Button label:         @curr', array('@curr' => $settings['stripe_button_label']));
   }
 
   return implode('<br />', $summary);
@@ -333,6 +422,7 @@ function stripe_button_field_formatter_view($entity_type, $entity, $field, $inst
 
   // create stripe button render array
   $stripe_buttons = array();
+  $custom_buttons = array();
   $button_settings = array(
     'description' => $settings['stripe_button_description'] ? t($settings['stripe_button_description']) : '',
     'currency' => $settings['stripe_button_currency'],
@@ -367,15 +457,16 @@ function stripe_button_field_formatter_view($entity_type, $entity, $field, $inst
     case 'stripe_button_custom':
       foreach ($items as $delta => $item) {
         // prevent more than one item for customizable button
-        if ($delta > 0) break;
+        //if ($delta > 0) break;
 
         // set button specific values
-        $amount = $item['value']; // preset value possibly changed by user
+        $amount = $item['value']; // default value possibly changed by user
         $button_id = drupal_clean_css_identifier($field_name . '-' . $delta);
 
-        // add button with its settings
-        $button_settings['amount'] = $amount*100;  // Stripe needs cents (Rappen) as value
+        // add button with its  (no amount set)
+        //$button_settings['amount'] = $amount*100;  // Stripe needs cents (Rappen) as value
         $stripe_buttons[$button_id] = $button_settings;
+        $custom_buttons[$button_id] = $button_settings['currency'];
 
         // create button render array
         $element[$delta] = array(
@@ -396,6 +487,7 @@ function stripe_button_field_formatter_view($entity_type, $entity, $field, $inst
 
   // add Drupal js settings (Drupal settings are merged for multiple buttons)
   $js_settings['stripe_button']['stripe_buttons'] = $stripe_buttons;
+  $js_settings['stripe_button']['custom_buttons'] = $custom_buttons;
   drupal_add_js($js_settings, 'setting');
 
   return $element;

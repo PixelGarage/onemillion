@@ -7,7 +7,7 @@
 (function ($) {
 
   /**
-   * Handles the Stripe checkout dialog and the returns the Stripe token to the server.
+   * Handles the Stripe checkout dialog and returns the Stripe token to the server.
    * This script handles all Stripe buttons with a predefined value.
    *
    * @see https://stripe.com/docs/checkout#integration-custom
@@ -41,19 +41,19 @@
                 // charge the customer with the token and display response
                 $fieldItemDiv.load('stripe/ajax/token', params, function (response, status, xhr) {
                   if (status == "error") {
-                    var msg = "Server error ";
-                    $fieldItemDiv.html(msg + xhr.status + ": " + xhr.statusText);
+                    var msg = "Server error " + xhr.status + ": " + xhr.statusText;
+                    $fieldItemDiv.html('<div class="label label-warning stripe-message">' + msg + '</div>');
                   }
                   else {
                     // do NOT attach behaviours to button, it is disabled
-                    //Drupal.attachBehaviors($fieldItemsDiv);
+                    //Drupal.attachBehaviors($fieldItemDiv);
                   }
                 });
               }
               else {
                 // no valid token returned => should never happen
                 var msg = "Stripe Checkout unavailable.";
-                $fieldItemDiv.html(msg);
+                $fieldItemDiv.html('<div class="label label-warning stripe-message">' + msg + '</div>');
               }
 
             }
@@ -63,6 +63,7 @@
       $.each(Drupal.settings.stripe_button.stripe_buttons, function (button, settings) {
         var $button = $('#' + button);
 
+        $button.off('click');
         $button.on('click', function (e) {
           // set current settings
           currentSettings = settings;
@@ -94,13 +95,52 @@
 
 
   /**
-   * Handles the Stripe checkout dialog and the returns the Stripe token to the server.
-   * This script handles all Stripe buttons with a customizable value.
+   * Handles all customizable buttons.
+   * After the user has entered a amount, the stripe button with this amount is requested from the server
+   * and immediately clicked to open the Stripe Checkout dialog.
    *
    * @see https://stripe.com/docs/checkout#integration-custom
    */
   Drupal.behaviors.stripeCheckoutCustomButton = {
     attach: function () {
+      // Iterate through all defined stripe button instances
+      $.each(Drupal.settings.stripe_button.custom_buttons, function (button, currency) {
+        var $form_button = $('#form-' + button + ' .form-submit'),
+            $form_text = $('#form-' + button + ' .form-text'),
+            $fieldItemDiv = $form_button.parents('.field-item');
+
+        $form_button.off('click');
+        $form_button.on('click', function (e) {
+          var new_amount = $form_text.val(),
+              params = {
+                btnID: button,  // used to recreate button in ajax response
+                newAmount: new_amount,
+                currency: currency
+              };
+
+          //
+          // update the amount of the button in the stripe button settings (in cents)
+          Drupal.settings.stripe_button.stripe_buttons[button].amount = new_amount*100;
+
+          //
+          // get the stripe button with the user set value
+          $fieldItemDiv.load('stripe/ajax/button', params, function (response, status, xhr) {
+            if (status == "error") {
+              var msg = "Server error " + xhr.status + ": " + xhr.statusText;
+              $fieldItemDiv.html('<div class="label label-warning stripe-message">' + msg + '</div>');
+            }
+            else {
+              // attach behaviours to new stripe button
+              Drupal.attachBehaviors($fieldItemDiv);
+
+              // immediately open Stripe Checkout dialog
+              $('#' + button).click();
+            }
+          });
+
+          e.preventDefault();
+        });
+      });
 
     }
   }

@@ -11119,6 +11119,150 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-spenden .row .col-sm-12 .field-name-field-images .field-item .carousel > a.carousel-control {
   display: none;
 }
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden-predefined {
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  z-index: 10;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden-predefined .field-items {
+  text-align: center;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden-predefined .field-items .field-item {
+  display: inline-block;
+  margin: 0 2px;
+}
+@media screen and (min-width: 480px) {
+  .node.node-spenden .row .col-sm-12 .field-name-field-spenden-predefined .field-items .field-item {
+    margin: 0 10px;
+  }
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden-predefined .field-items .field-item .stripe-button {
+  display: inline-block;
+  padding: 6px 15px;
+  font-family: 'ProximaNovaBold';
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  color: #ffffff;
+  outline: none;
+  opacity: 1.0;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: none;
+  background-color: #2dba71;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden-predefined .field-items .field-item .stripe-button:hover,
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden-predefined .field-items .field-item .stripe-button:focus {
+  opacity: 0.7;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden {
+  position: absolute;
+  top: 130px;
+  width: 100%;
+  z-index: 10;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items {
+  text-align: center;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item {
+  display: inline-block;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item .stripe-button {
+  display: inline-block;
+  padding: 6px 15px;
+  font-family: 'ProximaNovaBold';
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  color: #ffffff;
+  outline: none;
+  opacity: 1.0;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: none;
+  background-color: #2dba71;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item .stripe-button:hover,
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item .stripe-button:focus {
+  opacity: 0.7;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item #form-field-spenden-0 {
+  width: 100%;
+  margin: 0 auto;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item #form-field-spenden-0 form .input-group {
+  display: inline-block;
+  margin: 0 -2px;
+  padding: 0;
+  width: auto;
+  font-family: 'ProximaNovaLight';
+  font-size: 22px;
+  letter-spacing: 0;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item #form-field-spenden-0 form .input-group .input-group-addon {
+  display: inline-block;
+  vertical-align: top;
+  padding: 6px 5px;
+  height: 34px;
+  width: 50px;
+  font-family: 'ProximaNovaLight';
+  color: #fff;
+  border: none;
+  background-color: #c7c7c7;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item #form-field-spenden-0 form .input-group .form-item-stripe-button-custom-amount {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0;
+  width: 100px;
+  color: #000000;
+  text-align: right;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item #form-field-spenden-0 form .input-group .form-item-stripe-button-custom-amount label {
+  display: none;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item #form-field-spenden-0 form .input-group .form-item-stripe-button-custom-amount input.form-text {
+  padding: 6px 5px;
+  height: 34px;
+  text-align: right;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  border: none;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item #form-field-spenden-0 form .input-group .form-item-stripe-button-custom-amount input.form-text:focus {
+  border: 1px solid #2dba71;
+  box-shadow: 1px 1px 1px #aaa inset;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item #form-field-spenden-0 form button.form-submit {
+  display: inline-block;
+  padding: 6px 15px;
+  font-family: 'ProximaNovaBold';
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  color: #ffffff;
+  outline: none;
+  opacity: 1.0;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: none;
+  background-color: #2dba71;
+  margin: 0 0 0 -4px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item #form-field-spenden-0 form button.form-submit:hover,
+.node.node-spenden .row .col-sm-12 .field-name-field-spenden .field-items .field-item #form-field-spenden-0 form button.form-submit:focus {
+  opacity: 0.7;
+}
 .node.node-spenden .row .col-sm-12 .field-name-body {
   position: absolute;
   top: 60px;
@@ -11241,13 +11385,6 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   max-width: 100%;
   height: auto;
   min-height: 350px;
-}
-.node.node-spenden .row .col-sm-12 .field-name-field-spenden-10 {
-  position: absolute;
-  top: 120px;
-}
-.node.node-spenden .row .col-sm-12 .field-name-field-spenden-10 .field-item {
-  display: inline-block;
 }
 /*
  *  Node Event component
