@@ -11180,7 +11180,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 .node.node-spenden .row .col-sm-12 .field-type-number-decimal .field-items .field-item form .input-group .input-group-addon {
   display: inline-block;
   vertical-align: top;
-  padding: 6px 5px;
+  padding: 8px 5px 4px;
   height: 34px;
   width: 50px;
   font-family: 'ProximaNovaLight';
@@ -11201,7 +11201,7 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   display: none;
 }
 .node.node-spenden .row .col-sm-12 .field-type-number-decimal .field-items .field-item form .input-group .form-item-stripe-button-custom-amount input.form-text {
-  padding: 6px 5px;
+  padding: 8px 5px 4px;
   height: 34px;
   text-align: right;
   -moz-border-radius: 0;
