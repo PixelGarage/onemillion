@@ -194,20 +194,20 @@ function theme_stripe_button_fix_value($variables) {
   else if ($variables['amount'] == 0) {
     //
     // successful payment, create success button (disabled)
-    $label = t("Paid.");
+    $label = t("Yes");
     $output = '<button id="' . $variables['id'] . '" type="button"' .
       ' class="btn btn-success stripe-button" disabled>' .
-      $label .
+      '<span class="fa fa-check"></span>' . $label .
       '</button>';
   }
   else {
     //
     // failed payment, create fail button (disabled)
-    $label = t("NOT Paid!");
+    $label = t("No");
     $output = '<button id="' . $variables['id'] . '" type="button"' .
       ' class="btn btn-warning stripe-button" data-toggle="popover" data-trigger="hover" data-placement="auto bottom"'.
       ' title="Stripe Error" data-content="' . $variables['message']. '">' .
-      $label .
+      '<span class="fa fa-times"></span>' . $label .
       '</button>';
   }
 
