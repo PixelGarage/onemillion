@@ -233,7 +233,8 @@ function theme_stripe_button_custom_value($variables) {
   $session_data['currency'] = $variables['currency'];
 
   // create custom amount form
-  $output = drupal_render(drupal_get_form('stripe_button_custom_form'));
+  $render_form = drupal_get_form('stripe_button_custom_form');
+  $output = drupal_render($render_form);
 
   return $output;
 }
@@ -288,7 +289,7 @@ function stripe_button_custom_form($form, &$form_state) {
 function stripe_button_field_formatter_info() {
   return array(
     'stripe_button_fixed' => array(
-      'label' => t('Fixed value stripe button'),
+      'label' => t('Predefined value stripe button'),
       'field types' => array('number_decimal'),
       'settings'  => array(
         // Array of the settings to be defined
@@ -302,7 +303,7 @@ function stripe_button_field_formatter_info() {
       ),
     ),
     'stripe_button_custom' => array(
-      'label' => t('Customizable stripe button'),
+      'label' => t('Custom value stripe button'),
       'field types' => array('number_decimal'),
       'settings'  => array(
         // Array of the settings to be defined
@@ -331,6 +332,12 @@ function stripe_button_field_formatter_settings_form($field, $instance, $view_mo
       'CHF'  => t('CHF'),
       'EUR' => t('EUR'),
       'USD' => t('USD'),
+      'GBP' => t('GBP'),
+      'DKK' => t('DKK'),
+      'NOK' => t('NOK'),
+      'SEK' => t('SEK'),
+      'AUD' => t('AUD'),
+      'CAD' => t('CAD'),
     );
     $element['stripe_button_currency'] = array(
       '#type' => 'select',
@@ -358,13 +365,13 @@ function stripe_button_field_formatter_settings_form($field, $instance, $view_mo
     );
     $element['stripe_button_billing'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Request for billing address.'),
+      '#title' => t("Collect user's billing address."),
       '#default_value' => $settings['stripe_button_billing'],
       '#description'   => t("Specify whether Checkout should collect the user's billing address. Default: false"),
     );
     $element['stripe_button_shipping'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Request for shipping address.'),
+      '#title' => t("Collect user's shipping address."),
       '#default_value' => $settings['stripe_button_shipping'],
       '#description'   => t("Specify whether Checkout should collect the user's shipping address. Default: false"),
     );
@@ -372,7 +379,7 @@ function stripe_button_field_formatter_settings_form($field, $instance, $view_mo
       '#type' => 'checkbox',
       '#title' => t('Remember the customer.'),
       '#default_value' => $settings['stripe_button_remember'],
-      '#description'   => t("Specify whether to include the option to 'Remember Me' for future purchases. Default: false"),
+      '#description'   => t("Specify whether to include the option to 'Remember Me' for future purchases (one click payment). Default: false"),
     );
   }
 
