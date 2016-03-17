@@ -11017,14 +11017,24 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   left: 15px;
   padding: 10px;
   font-family: 'ProximaNovaBold';
-  font-size: 34px;
-  line-height: 30px;
+  font-size: 28px;
+  line-height: 28px;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   white-space: nowrap;
   color: #fff;
   background-color: #2dba71;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+@media screen and (min-width: 480px) {
+  .node.node-page-banner .row .col-sm-12 .field-name-field-slogan-row-one,
+  .node.node-page-banner .row .col-sm-12 .field-name-field-slogan-row-two,
+  .node.node-page-banner .row .col-sm-12 .field-name-field-slogan-row-three {
+    left: 50px;
+    padding: 8px 15px;
+    font-size: 35px;
+    line-height: 35px;
+  }
 }
 @media screen and (min-width: 768px) {
   .node.node-page-banner .row .col-sm-12 .field-name-field-slogan-row-one,

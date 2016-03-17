@@ -85,8 +85,8 @@
         left: 15px;
         padding: 10px;
         font-family: @pxl-text-font-bold;
-        font-size: 34px;
-        line-height: 30px;
+        font-size: 28px;
+        line-height: 28px;
         letter-spacing: -0.02em;
         text-transform: uppercase;
         white-space: nowrap;
@@ -94,6 +94,12 @@
         background-color: @pxl-color-green;
         box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 
+        @media @narrow {
+          left: 50px;
+          padding: 8px 15px;
+          font-size: 35px;
+          line-height: 35px;
+        }
         @media @tablet {
           left: 125px;
           padding: 12px 15px;
