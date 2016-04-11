@@ -54,3 +54,20 @@ function hook_stripe_api_webhook_EVENT_TYPE($data, Stripe\Event $event = NULL) {
     ));
   }
 }
+
+/**
+ * Alter the stripe account, that is used for the transaction.
+ *
+ * @param string $account
+ *   Stripe account to choose, either 'default' or 'second'. Leave blank to use the default account.
+ */
+function hook_stripe_account_alter(&$account) {
+  // return the account depending on the set language
+  global $language;
+  if ($language->language == 'fr') {
+    $account = 'second';
+  }
+  else {
+    $account = 'default';
+  }
+}

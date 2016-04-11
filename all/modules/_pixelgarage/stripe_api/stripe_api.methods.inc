@@ -19,11 +19,18 @@
  * @param mixed $params
  *   Additional params to pass to the method. Can be an array, string.
  *
+ * @param string $account
+ *   Stripe account to choose, either 'default' or 'second'. Leave blank to use the default account.
+ *
  * @return Stripe\ApiResource
  *   Returns the ApiResource or NULL on error.
  */
-function stripe_api_call($obj, $method = NULL, $params = NULL) {
-  libraries_load('stripe');
+function stripe_api_call($obj, $method = NULL, $params = NULL, $account = 'default') {
+  $library = libraries_load('stripe');
+  if (!empty($library['loaded'])) {
+    \Stripe\Stripe::setApiKey(_stripe_api_secret_key(null, $account));
+  }
+
   $obj = ucfirst($obj);
   $class = 'Stripe\\' . $obj;
   if ($method) {

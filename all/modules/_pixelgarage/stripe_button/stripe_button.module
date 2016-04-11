@@ -44,7 +44,8 @@ function stripe_button_token_callback() {
   }
 
   // set the private API key
-  \Stripe\Stripe::setApiKey(_stripe_api_secret_key());
+  $account = $_POST['account'];
+  \Stripe\Stripe::setApiKey(_stripe_api_secret_key(null, $account));
 
   // get the credit card details
   $token = $_POST['stripeToken'];
@@ -422,9 +423,11 @@ function stripe_button_field_formatter_view($entity_type, $entity, $field, $inst
   // create drupal settings array
   $logo_path = theme_get_setting('logo_path', 'pixelgarage');
   $site_name = variable_get('site_name');
+  $account = _stripe_api_account_selector();
   $js_settings = array (
     'stripe_button' => array(
-      'stripe_public_key' => _stripe_api_public_key(),
+      'stripe_public_key' => _stripe_api_public_key(null, $account),
+      'account' => $account,
       'name' => $settings['stripe_button_name'] ? t($settings['stripe_button_name']) : $site_name,
       'icon' => $logo_path ? file_create_url($logo_path) : '',
     ),
@@ -490,7 +493,7 @@ function stripe_button_field_formatter_view($entity_type, $entity, $field, $inst
       break;
   }
 
-  // add Checkout javascript
+  // add javascript files including the external Stripe Checkout library
   $path = drupal_get_path('module', 'stripe_button');
   drupal_add_js(STRIPE_CHECKOUT_JS_PATH, 'external');
   drupal_add_js($path . '/js/stripe_button.js');
@@ -501,4 +504,22 @@ function stripe_button_field_formatter_view($entity_type, $entity, $field, $inst
   drupal_add_js($js_settings, 'setting');
 
   return $element;
+}
+
+
+/* =============================================================================
+ *   Hook implementations
+ * ========================================================================== */
+/**
+ * Implements hook_stripe_account_alter().
+ */
+function stripe_button_stripe_account_alter(&$account) {
+  // return the account depending on the set language
+  global $language;
+  if ($language->language == 'fr') {
+    $account = 'second';
+  }
+  else {
+    $account = 'default';
+  }
 }

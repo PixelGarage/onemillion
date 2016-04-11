@@ -33,6 +33,7 @@
                       stripeToken: token.id,
                       btnID: id,  // used to recreate button in ajax response
                       email: token.email,
+                      account: Drupal.settings.stripe_button.account,
                       amount: currentSettings.amount,
                       currency: currentSettings.currency
                     };
