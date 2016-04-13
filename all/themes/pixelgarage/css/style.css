@@ -11282,17 +11282,12 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
   position: absolute;
   top: 70px;
 }
-body.i18n-fr .node.node-spenden .row .col-sm-12 .field-name-field-spenden-predefined {
-  display: none;
-}
 .node.node-spenden .row .col-sm-12 .field-name-field-spenden {
   position: absolute;
   top: 130px;
 }
-body.i18n-fr .node.node-spenden .row .col-sm-12 .field-name-field-spenden {
-  display: none;
-}
 .node.node-spenden .row .col-sm-12 .field-name-body {
+  display: none;
   position: absolute;
   top: 60px;
   left: 50%;
@@ -11304,9 +11299,6 @@ body.i18n-fr .node.node-spenden .row .col-sm-12 .field-name-field-spenden {
   color: #fff;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   z-index: 10;
-}
-body.i18n-de .node.node-spenden .row .col-sm-12 .field-name-body {
-  display: none;
 }
 .node.node-spenden .row .col-sm-12 .field-name-body h1,
 .node.node-spenden .row .col-sm-12 .field-name-body h2,
