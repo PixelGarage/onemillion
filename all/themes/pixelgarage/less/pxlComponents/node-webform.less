@@ -85,5 +85,69 @@
       }
     }
   }
-
 }
+
+//
+// taler webform
+.node.node-webform.view-mode-taler {
+  padding-bottom: 30px;
+
+  .row {
+    padding: 0 10px;
+
+    @media @narrow {
+      padding: 0 20px;
+    }
+
+    @media @tablet {
+      padding: 0 70px;
+    }
+
+    @media @normal {
+      padding: 0 90px;
+    }
+
+    .col-sm-12, .col-sm-6 {
+      padding: 20px 10px;
+
+      @media @tablet {
+        padding: 30px 10px;
+      }
+
+      .field-name-title {
+        //display: none;
+      }
+
+      .field-name-field-slogan {
+        .field-item {
+          font-family: @pxl-title-font;
+          font-size: 34px;
+          line-height: 38px;
+          letter-spacing: -0.02em;
+          text-align: center;
+
+          @media @tablet {
+            font-size: 52px;
+            line-height: 58px;
+            letter-spacing: -0.02em;
+            text-align: left;
+          }
+        }
+      }
+
+      .webform-client-form {
+        // see webform-xxx.less
+      }
+
+      .field-name-body {
+        #pxl-mixins.wysiwyg-body;
+        text-align: center;
+
+        @media @tablet {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+

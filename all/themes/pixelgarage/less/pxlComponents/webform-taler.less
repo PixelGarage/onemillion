@@ -1,0 +1,104 @@
+/*
+ *  Webform Taler component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+@webform-max-width: 100%;
+@webform-inline-input-width: 75%;
+
+@webform-color-label: @text-color;
+@webform-color-text: @text-color;
+@webform-color-border: @pxl-color-border-light;
+@webform-color-border-active: @pxl-color-green;
+@webform-bg-color-input: @pxl-color-text-bg;
+@webform-color-shadow: #ccc;
+
+@webform-color-submit: #fff;
+@webform-bg-color-submit: @pxl-color-green;
+
+
+// Mixins
+// -------------------------
+.resp-submit-button(@size: @font-size-large; @color: @webform-color-submit; @bg-color: @webform-bg-color-submit; @radius: @border-radius-large) {
+  display: inline-block;
+  margin: 0;
+  padding: 0.6em 1.5em;
+  font-family: @pxl-text-font-bold;
+  font-size: @size;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  color: @color;
+  outline: none;
+  opacity: 1.0;
+  #pxl-mixins.border-radius(@radius);
+  border: 2px solid @bg-color;
+  background-color: @bg-color;
+
+  &:hover, &:focus {
+    opacity: 0.7;
+  }
+}
+
+
+
+
+// Webform settings
+// -------------------------
+form.webform-client-form-48 {
+  // all components
+  .webform-component {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 0;
+    width: @webform-max-width;
+    background-color: #fff;
+
+    div.description {
+      display: none;
+    }
+
+    input, textarea {
+      display: block;
+      margin: 0 auto;
+      padding: 14px 15px;
+      height: auto;
+      width: 100%;
+      font-family: @pxl-text-font;
+      font-size: 20px;
+      line-height: 1;
+      text-align: left;
+      color: @webform-color-text;
+      box-shadow: none;
+      #pxl-mixins.border-radius(@border-radius-large);
+      border: 1px solid @webform-color-border;
+      background-color: @webform-bg-color-input;
+      #pxl-mixins.placeholder(@text-color-disabled, center);
+
+      @media @tablet {
+        display: block;
+        margin: 0;
+        #pxl-mixins.placeholder(@text-color-disabled, left);
+      }
+    }
+    input:focus,
+    textarea:focus {
+      border: 1px solid @webform-color-border-active;
+      .box-shadow(1px 1px 3px @webform-color-shadow inset);
+    }
+  }
+
+  div.form-actions {
+    display: block;
+    margin: 20px auto 50px;
+    padding: 0;
+    width: auto;
+    text-align: right;
+
+    button.webform-submit {
+      .resp-submit-button(22px);
+      padding: 12px 30px;
+    }
+  }
+}
