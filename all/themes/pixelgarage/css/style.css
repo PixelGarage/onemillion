@@ -10271,18 +10271,22 @@ form.webform-client-form-30 div.form-actions button.webform-submit:focus {
 /*
  *  Webform Taler component
  * --------------------------------------------------*/
-form.webform-client-form-48 .webform-component {
+form.webform-client-form-48 .webform-component,
+form.webform-client-form-49 .webform-component {
   display: block;
   margin: 0 auto 20px;
   padding: 0;
   width: 100%;
   background-color: #fff;
 }
-form.webform-client-form-48 .webform-component div.description {
+form.webform-client-form-48 .webform-component div.description,
+form.webform-client-form-49 .webform-component div.description {
   display: none;
 }
 form.webform-client-form-48 .webform-component input,
-form.webform-client-form-48 .webform-component textarea {
+form.webform-client-form-49 .webform-component input,
+form.webform-client-form-48 .webform-component textarea,
+form.webform-client-form-49 .webform-component textarea {
   display: block;
   margin: 0 auto;
   padding: 14px 15px;
@@ -10301,58 +10305,76 @@ form.webform-client-form-48 .webform-component textarea {
   background-color: #eaeaea;
 }
 form.webform-client-form-48 .webform-component input::-moz-placeholder,
-form.webform-client-form-48 .webform-component textarea::-moz-placeholder {
+form.webform-client-form-49 .webform-component input::-moz-placeholder,
+form.webform-client-form-48 .webform-component textarea::-moz-placeholder,
+form.webform-client-form-49 .webform-component textarea::-moz-placeholder {
   text-align: center;
   color: #777777;
   opacity: 1;
 }
 form.webform-client-form-48 .webform-component input:-ms-input-placeholder,
-form.webform-client-form-48 .webform-component textarea:-ms-input-placeholder {
+form.webform-client-form-49 .webform-component input:-ms-input-placeholder,
+form.webform-client-form-48 .webform-component textarea:-ms-input-placeholder,
+form.webform-client-form-49 .webform-component textarea:-ms-input-placeholder {
   text-align: center;
   color: #777777;
 }
 form.webform-client-form-48 .webform-component input::-webkit-input-placeholder,
-form.webform-client-form-48 .webform-component textarea::-webkit-input-placeholder {
+form.webform-client-form-49 .webform-component input::-webkit-input-placeholder,
+form.webform-client-form-48 .webform-component textarea::-webkit-input-placeholder,
+form.webform-client-form-49 .webform-component textarea::-webkit-input-placeholder {
   text-align: center;
   color: #777777;
 }
 @media screen and (min-width: 768px) {
   form.webform-client-form-48 .webform-component input,
-  form.webform-client-form-48 .webform-component textarea {
+  form.webform-client-form-49 .webform-component input,
+  form.webform-client-form-48 .webform-component textarea,
+  form.webform-client-form-49 .webform-component textarea {
     display: block;
     margin: 0;
   }
   form.webform-client-form-48 .webform-component input::-moz-placeholder,
-  form.webform-client-form-48 .webform-component textarea::-moz-placeholder {
+  form.webform-client-form-49 .webform-component input::-moz-placeholder,
+  form.webform-client-form-48 .webform-component textarea::-moz-placeholder,
+  form.webform-client-form-49 .webform-component textarea::-moz-placeholder {
     text-align: left;
     color: #777777;
     opacity: 1;
   }
   form.webform-client-form-48 .webform-component input:-ms-input-placeholder,
-  form.webform-client-form-48 .webform-component textarea:-ms-input-placeholder {
+  form.webform-client-form-49 .webform-component input:-ms-input-placeholder,
+  form.webform-client-form-48 .webform-component textarea:-ms-input-placeholder,
+  form.webform-client-form-49 .webform-component textarea:-ms-input-placeholder {
     text-align: left;
     color: #777777;
   }
   form.webform-client-form-48 .webform-component input::-webkit-input-placeholder,
-  form.webform-client-form-48 .webform-component textarea::-webkit-input-placeholder {
+  form.webform-client-form-49 .webform-component input::-webkit-input-placeholder,
+  form.webform-client-form-48 .webform-component textarea::-webkit-input-placeholder,
+  form.webform-client-form-49 .webform-component textarea::-webkit-input-placeholder {
     text-align: left;
     color: #777777;
   }
 }
 form.webform-client-form-48 .webform-component input:focus,
-form.webform-client-form-48 .webform-component textarea:focus {
+form.webform-client-form-49 .webform-component input:focus,
+form.webform-client-form-48 .webform-component textarea:focus,
+form.webform-client-form-49 .webform-component textarea:focus {
   border: 1px solid #2dba71;
   -webkit-box-shadow: 1px 1px 3px #cccccc inset;
   box-shadow: 1px 1px 3px #cccccc inset;
 }
-form.webform-client-form-48 div.form-actions {
+form.webform-client-form-48 div.form-actions,
+form.webform-client-form-49 div.form-actions {
   display: block;
   margin: 20px auto 50px;
   padding: 0;
   width: auto;
   text-align: right;
 }
-form.webform-client-form-48 div.form-actions button.webform-submit {
+form.webform-client-form-48 div.form-actions button.webform-submit,
+form.webform-client-form-49 div.form-actions button.webform-submit {
   display: inline-block;
   margin: 0;
   padding: 0.6em 1.5em;
@@ -10372,11 +10394,15 @@ form.webform-client-form-48 div.form-actions button.webform-submit {
   padding: 12px 30px;
 }
 form.webform-client-form-48 div.form-actions button.webform-submit:hover,
-form.webform-client-form-48 div.form-actions button.webform-submit:focus {
+form.webform-client-form-49 div.form-actions button.webform-submit:hover,
+form.webform-client-form-48 div.form-actions button.webform-submit:focus,
+form.webform-client-form-49 div.form-actions button.webform-submit:focus {
   opacity: 0.7;
 }
 form.webform-client-form-48 div.form-actions button.webform-submit:hover,
-form.webform-client-form-48 div.form-actions button.webform-submit:focus {
+form.webform-client-form-49 div.form-actions button.webform-submit:hover,
+form.webform-client-form-48 div.form-actions button.webform-submit:focus,
+form.webform-client-form-49 div.form-actions button.webform-submit:focus {
   opacity: 0.7;
 }
 /*
