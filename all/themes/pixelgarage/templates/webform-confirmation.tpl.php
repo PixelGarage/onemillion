@@ -26,7 +26,7 @@
     <?php if ($confirmation_message): ?>
       <?php print $confirmation_message ?>
     <?php else: ?>
-      <p><?php print t('Thank you, your submission has been received.'); ?></p>
+      <p><?php print t("Von der einen Hand zur andern... <br><br>Danke dass Du den Taler zum wandern gebracht hast. Falls Du nochmals einen Taler auf die Wanderung schicken möchtest, kannst Du <a href='@shopify' target='_blank'>hier</a> einen Neuen bestellen. <br><br>Danke für's Mitmachen!", array('@shopify' => 'https://ja-oui-si.myshopify.com/products/der-wandertaler')); ?></p>
     <?php endif; ?>
   </div>
   <div class="confirmation-share">

@@ -9849,7 +9849,8 @@ form#user-login {
 }
 .webform-confirmation .confirmation-message .first-paragraph,
 .webform-confirmation .confirmation-message .second-paragraph,
-.webform-confirmation .confirmation-message .third-paragraph {
+.webform-confirmation .confirmation-message .third-paragraph,
+.webform-confirmation .confirmation-message p {
   font-family: 'ProximaNovaBold';
   font-size: 30px;
   line-height: 1.2;
@@ -9859,12 +9860,14 @@ form#user-login {
 @media screen and (min-width: 768px) {
   .webform-confirmation .confirmation-message .first-paragraph,
   .webform-confirmation .confirmation-message .second-paragraph,
-  .webform-confirmation .confirmation-message .third-paragraph {
+  .webform-confirmation .confirmation-message .third-paragraph,
+  .webform-confirmation .confirmation-message p {
     font-size: 40px;
     text-align: left;
   }
 }
-.webform-confirmation .confirmation-message .second-paragraph {
+.webform-confirmation .confirmation-message .second-paragraph,
+.webform-confirmation .confirmation-message p {
   color: #000000;
 }
 .webform-confirmation .confirmation-message .third-paragraph {
